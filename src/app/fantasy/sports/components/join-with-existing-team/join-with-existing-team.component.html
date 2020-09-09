@@ -1,0 +1,112 @@
+<div class="join-with-existing-team-component">
+  <div class="header">Choose your teams to join the room with</div>
+
+  <div class="teams-list">
+    <div
+      class="team-content"
+      [class.selected]="team.selected"
+      (click)="selectTeam(team)"
+      *ngFor="let team of teams; let i = index"
+    >
+      <div class="team">
+        <div class="team-header">
+          <div class="tick" [class.selected]="team.selected">
+            <div class="selected-img" *ngIf="team.selected">
+              <img src="assets/images/selected.svg" alt="" />
+            </div>
+          </div>
+          <div class="team-number">Team {{ i + 1 }}</div>
+        </div>
+        <div class="body">
+          <div class="captain">
+            <div class="img">
+              <img
+                src="assets/images/players/{{ players[team.captain].icon }}"
+                alt=""
+              />
+            </div>
+            <div class="tag">c</div>
+            <div class="name">{{ players[team.captain].playerName }}</div>
+          </div>
+          <div class="preview">
+            <button class="preview" (click)="teamPreview(team)">Preview</button>
+          </div>
+          <div class="captain">
+            <div class="img">
+              <img
+                src="assets/images/players/{{ players[team.viceCaptain].icon }}"
+                alt=""
+              />
+            </div>
+            <div class="tag">vc</div>
+            <div class="name">{{ players[team.viceCaptain].playerName }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="confirm-btn"
+  *ngIf="isTeamSelected"
+  data-aos-anchor-placement="center-bottom"
+  (click)="toggleConfirmationDialog()"
+>
+  <button class="full-width" type="button">
+    {{ "JOIN_ROOM" | translate }}
+  </button>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showRoomJoinConfirmationDialog">
+  <div class="bg full" (click)="toggleConfirmationDialog()"></div>
+  <div class="dialog">
+    <div class="header">{{ "CONFIRMATION" | translate }}</div>
+    <div class="body">
+      <div class="sponsor">
+        <div class="img-wrap">
+          <img
+            src="assets/images/room-sponsors/{{ selectedRoom.icon }}"
+            alt=""
+          />
+        </div>
+        <div class="points">
+          <div class="p-img-wrap">
+            <img src="assets/images/points_icn.png" alt="" />
+          </div>
+          <div class="value">{{ selectedRoom.points }}</div>
+        </div>
+      </div>
+      <div class="message">
+        {{ "JOIN_ROOOM_CONFIRMATION_TEXT" | translate }}
+        <span>{{ selectedRoom.name }}</span>
+        {{ "JOIN_ROOM_CONFIRMATION_ROOM_TEXT" | translate }}
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn cancel no-shadow" (click)="cancelJoining()">
+        {{ "CANCEL" | translate }}
+      </button>
+      <button class="action-btn no-shadow" (click)="createTeamAndJoinRoom()">
+        <span *ngIf="!confirming">{{ "CONFIRM" | translate }}</span>
+        <span *ngIf="confirming">{{ "PLEASE_WAIT" | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showPointsInsufficientPopup">
+  <div class="bg full" (click)="toggleConfirmationDialog()"></div>
+  <div class="dialog">
+    <div class="header">{{ "LOW_POINTS" | translate }}</div>
+    <div class="body">
+      <div class="message low-points">
+        {{ "LOW_BALANCE_TEXT" | translate }}
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn no-shadow" (click)="close()">
+        {{ "OK" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

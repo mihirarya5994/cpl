@@ -1,0 +1,15 @@
+.ad-component {
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .Video-player {
+    max-height: 100%;
+    max-width: 100%;
+    ins {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

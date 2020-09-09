@@ -1,0 +1,173 @@
+<div class="create-team-component full" *ngIf="!match">
+  <app-loader></app-loader>
+</div>
+<div class="create-team-component full" *ngIf="match">
+  <div class="scroll-content full">
+    <div class="match-info">
+      <div class="info">
+        Max of <span>{{ match.validations.teamPlayer }} Players</span> from a
+        team can be selected
+      </div>
+      <div class="match-wrap">
+        <div class="participant">
+          <div class="img-wrap">
+            <img src="assets/images/teams/{{ match.teams[0].icon }}" />
+            <div class="player-count one">
+              {{
+                getFilteredTeamPlayersByCountry(match.teams[0].teamId).length
+              }}
+            </div>
+          </div>
+          <div class="team-name">{{ match.teams[0].alias | translate }}</div>
+        </div>
+        <div class="timer-wrap">
+          <div class="text">{{ "MATCH_STARTS_IN" | translate }}</div>
+          <div class="timer">
+            <app-countdown [date]="match.startTime"></app-countdown>
+          </div>
+        </div>
+        <div class="participant">
+          <div class="img-wrap">
+            <img src="assets/images/teams/{{ match.teams[1].icon }}" />
+            <div class="player-count two">
+              {{
+                getFilteredTeamPlayersByCountry(match.teams[1].teamId).length
+              }}
+            </div>
+          </div>
+          <div class="team-name">{{ match.teams[1].alias | translate }}</div>
+        </div>
+      </div>
+      <div class="team-numbers">
+        <div class="members-wrap">
+          <span class="selected">{{ team.players.length }}</span>
+          <span class="total">/{{ match.validations.totalPlayer }}</span>
+        </div>
+        <div class="points-wrap">
+          <span class="points-burned">{{ pointsBurned }}</span>
+          <span class="points-avlbl"
+            >/{{ match.validations.createTeamPoints }}</span
+          >
+          <div class="img-wrap">
+            <img src="assets/images/coin_icn.png" />
+          </div>
+        </div>
+      </div>
+      <app-caps [team]="team"></app-caps>
+    </div>
+    <div class="players-wrap">
+      <div class="tab-bar">
+        <div
+          class="tab"
+          *ngFor="let type of playerTypes"
+          [class.active]="activeType.id === type.id"
+          (click)="selectType(type)"
+        >
+          <div class="numbers">
+            <span class="selected">{{
+              getFilteredTeamPlayersBySkill(type.id).length
+            }}</span>
+            <span class="total">/{{ match.validations.skill[type.id] }}</span>
+          </div>
+          <div class="title">{{ type.title | translate }}</div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div
+          class="player"
+          *ngFor="let player of getFilteredMatchPlayersBySkill(activeType.id)"
+          [class.selected]="player.selected"
+        >
+          <div class="left">
+            <div class="icon-wrap">
+              <div class="team-icon">
+                <img src="assets/images/teams/{{ player.team.icon }}" />
+              </div>
+              <div class="player-img">
+                <img src="assets/images/players/{{ player.icon }}" />
+              </div>
+              <div
+                class="player-status"
+                *ngIf="player.status"
+                [class.not-playing]="player.status === 'notplaying'"
+              >
+                <span *ngIf="player.status === 'playing'">{{
+                  "PLAYING" | translate
+                }}</span>
+                <span *ngIf="player.status === 'notplaying'">{{
+                  "NOT_PLAYING" | translate
+                }}</span>
+              </div>
+            </div>
+            <div class="details">
+              <div class="name">{{ player.playerName }}</div>
+              <div class="skill">
+                {{ player.skill | showSkill | translate }}
+              </div>
+              <div class="points">
+                <div class="text">{{ "PLAYER_POINTS" | translate }}</div>
+                <div class="value">{{ player.playerPoints }}</div>
+                <div class="dummy-traingle"></div>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="points">
+              <div class="number">{{ player.points }}</div>
+              <div class="img-wrap">
+                <img src="assets/images/coin_icn.png" />
+              </div>
+            </div>
+            <div class="action">
+              <button
+                class="remove"
+                type="button"
+                *ngIf="player.selected"
+                (click)="removePlayer(player)"
+              >
+                {{ "REMOVE" | translate }}
+              </button>
+              <button
+                type="button"
+                *ngIf="!player.selected"
+                (click)="addPlayer(player)"
+              >
+                <div class="add-icn">
+                  <img src="assets/images/plus.png" alt="" />
+                </div>
+                <div class="add-text">{{ "ADD_TO_TEAM" | translate }}</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="confirm-btn"
+      *ngIf="team.players.length === 11"
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+    >
+      <button class="full-width" type="button" (click)="confirmTeam()">
+        Confirm Team
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showPopup">
+  <div class="bg full" (click)="togglePopup()"></div>
+  <div class="dialog">
+    <div class="header">{{ "OOPS" | translate }}!</div>
+    <div class="body">
+      <div class="message">
+        {{ popup.text }}
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn no-shadow" (click)="togglePopup()">
+        {{ "OK" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

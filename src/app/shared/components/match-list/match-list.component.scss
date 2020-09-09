@@ -1,0 +1,19 @@
+@import "mixins";
+
+.match-list-component {
+  height: 100%;
+  .no-data {
+    opacity: 0.5;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .img {
+      width: 10rem;
+    }
+  }
+  .ad {
+    padding: 0 1rem;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="my-matches-component">
+  <div class="tab-bar">
+    <app-match-filter (selection)="filter($event)"></app-match-filter>
+  </div>
+  <div class="content" *ngIf="matches$ | async as matches; else loadingEl">
+    <ng-container *ngIf="matches.length; else noDataEl">
+      <app-match-list
+        [matches]="matches"
+        [type]="selectedType"
+        [contextName]="'USER_ROOMS_LISTING'"
+        (selection)="viewTeam($event)"
+        (joinRoom)="joinAnotherRoom($event)"
+        (showRoom)="showRoomDetails($event)"
+      ></app-match-list>
+    </ng-container>
+    <ng-template #noDataEl>
+      <div class="no-data">
+        <div class="img">
+          <img src="assets/images/no_match.png" />
+        </div>
+        <div class="text pt-3 text-center">{{ "NO_MATCHES" | translate }}</div>
+      </div>
+    </ng-template>
+  </div>
+  <ng-template #loadingEl>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

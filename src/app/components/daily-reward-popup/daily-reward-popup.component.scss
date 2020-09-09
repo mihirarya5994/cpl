@@ -1,0 +1,51 @@
+@import 'mixins';
+
+.daily-reward-popup{
+    background: rgba(0, 0, 0, 0.6);
+    .container{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #FFFFFF;
+      border-radius: 11px;
+      width: 80%;
+      color: #3C3C3C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .heading-text{
+        color: #D66B00;
+        @include font(43, bold);
+        padding: 1.5rem 0 1rem 0;
+      }
+      .text{
+        @include font(23, medium);
+        padding-bottom: 1rem;
+      }
+      .points{
+        @include font(32, bold);
+        .points-logo{
+          height: 32px;
+          width: 32px;
+          margin: 0 0.5rem;
+        }
+      }
+      .continue-btn{
+        background-color: #FFD739;
+        margin: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;   
+        @include font(23, bold);
+        padding: 0.5rem 0;
+        width: 100%;
+        padding: 0.75rem;
+        margin: 2rem 0 1rem 0;
+        border-radius: 10px;
+        border: 1px solid #70707081;
+      }
+    }
+    
+  }

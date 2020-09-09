@@ -1,0 +1,17 @@
+<div class="score-card-popup">
+  <div class="score-card-popup-bg" (click)="toggleScoreCard()"></div>
+  <div class="score-card-popup-content">
+    <div class="header">
+      <div class="left">
+        <div class="text">{{ "FULL_SCODE_BOARD" | translate }}</div>
+      </div>
+      <div class="right">
+        <div class="close" (click)="toggleScoreCard()">X</div>
+      </div>
+    </div>
+    <div class="content">
+      <app-loader *ngIf="loading"></app-loader>
+      <div class="score-frame" #scoreCardFrame></div>
+    </div>
+  </div>
+</div>

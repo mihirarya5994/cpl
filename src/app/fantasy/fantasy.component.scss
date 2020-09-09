@@ -1,0 +1,28 @@
+.fantasy-component {
+  .header-wrap {
+    height: 4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  .route-content {
+    top: 3.9rem;
+    bottom: 0;
+    border: none !important;
+    &.with-footer {
+      bottom: 4rem;
+    }
+  }
+  .footer-wrap {
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &.show {
+      height: 4rem;
+    }
+  }
+}

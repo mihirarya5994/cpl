@@ -1,0 +1,51 @@
+<div class="leaderboard" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="leaderboard {{ match.status }}" *ngIf="!loading">
+  <div class="rank-table">
+    <div class="table-header">
+      <div class="left">
+        <div class="total-teams">{{ "TOTAL_TEAMS" | translate }}</div>
+        <div class="teams-count">{{ joinedParticipants }}</div>
+      </div>
+      <div class="middle text-center">{{ "SCORE" | translate }}</div>
+      <div class="right text-center">
+        <span class="text">#{{ "RANKINGS" | translate }}</span>
+        <!-- <span class="sort-icon">s</span> -->
+      </div>
+    </div>
+    <div class="table-body">
+      <div class="table-row me">
+        <div class="left">
+          <div class="img-wrap">
+            <img
+              src="assets/images/avatars/{{ myLeaderboard?.avatarImg }}"
+              alt=""
+            />
+          </div>
+          <div class="player-info">
+            <div class="player-name">{{ myLeaderboard?.name }}</div>
+            <!-- <div class="player-loc">{{ 'INDIA' | translate }}</div> -->
+          </div>
+        </div>
+        <div class="middle text-center">
+          {{ myLeaderboard?.score || 0 | number }}
+        </div>
+        <div class="right text-center">#{{ myLeaderboard?.rank }}</div>
+      </div>
+      <div class="table-row" *ngFor="let row of leaderboard">
+        <div class="left">
+          <div class="img-wrap">
+            <img src="assets/images/avatars/{{ row?.avatarImg }}" alt="" />
+          </div>
+          <div class="player-info">
+            <div class="player-name">{{ row?.name }}</div>
+            <!-- <div class="player-loc">{{ 'INDIA' | translate }}</div> -->
+          </div>
+        </div>
+        <div class="middle text-center">{{ row?.points || 0 | number }}</div>
+        <div class="right text-center">#{{ row?.rank }}</div>
+      </div>
+    </div>
+  </div>
+</div>

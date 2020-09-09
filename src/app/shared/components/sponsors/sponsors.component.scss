@@ -1,0 +1,33 @@
+@import '~src/assets/styles/helpers/mixins';
+
+.sponsors-component {
+  .text {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    &.white {
+      color: white;
+      font-size: 0.9rem;
+    }
+  }
+  .list {
+    margin: 5px;
+    height: calc(100% - 25px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    .sponsor {
+      width: 5rem;
+      height: 3.5rem;
+      margin: 0 1rem;
+      &:first-child {
+        margin-left: 0;
+      }
+      .img-wrap {
+        @include flex-container(center);
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

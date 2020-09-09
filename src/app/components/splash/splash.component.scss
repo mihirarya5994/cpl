@@ -1,0 +1,80 @@
+@import "mixins";
+
+.splash-component {
+  background: url(~src/assets/images/splash/splash_bg.svg) no-repeat top center;
+  background-size: cover;
+  background-color: #4a00b4;
+  .top {
+    .jio-logo-wrap {
+      width: 5rem;
+      margin: 1rem auto;
+    }
+    .logo-wrap {
+      width: 18rem;
+      margin: 1rem auto;
+    }
+  }
+  .middle {
+    padding: 0 0.3rem;
+    width: 100%;
+    color: white !important;
+    .partners {
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .img-wrap {
+      width: 50%;
+      margin: auto;
+    }
+  }
+  .footer {
+    @include flex-container(center);
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    padding: 1.25rem;
+    text-align: center;
+    color: #fff;
+    left: 0;
+    right: 0;
+    .disclaimer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .tick-box {
+        margin: 0 0.5rem;
+        height: 20px;
+        width: 20px;
+        border-radius: 5px;
+        border: #fff 1px solid;
+        &.ticked {
+          background-color: #559c1a;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2px 3px;
+        }
+      }
+      @include font(21, medium);
+      padding: 0.5rem;
+      .tnc {
+        @include font(21, semi);
+        color: #ffd738;
+        padding-left: 0.3rem;
+      }
+    }
+    .play-now-button {
+      background-color: #ffd738;
+      font-family: MontserratBold;
+
+      &:disabled {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+  }
+}

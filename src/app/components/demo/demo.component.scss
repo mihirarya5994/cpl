@@ -1,0 +1,74 @@
+.demo-component {
+  .bg {
+    background: rgba(0, 0, 0, 0.75);
+  }
+  .launcher {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    text-align: center;
+    width: 80%;
+    border-radius: 6px;
+    .img-wrap {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      width: 15rem;
+    }
+    .content {
+      .message {
+        font-family: PoppinsSemiBold;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+          flex: 1;
+          margin: 1rem 0.25rem 0;
+          text-transform: uppercase;
+          background: #545454;
+          border: none;
+          box-shadow: none;
+          &.start {
+            background: #3c860c;
+          }
+        }
+      }
+    }
+  }
+  .video-wrap {
+    visibility: hidden;
+    video {
+      width: 100%;
+      height: 90%;
+      // padding: 1rem;
+    }
+    .skip-demo {
+      text-align: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1rem;
+      // position: absolute;
+      // bottom: 1rem;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+      button {
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+        box-shadow: none;
+      }
+    }
+    &.show {
+      visibility: visible;
+    }
+  }
+}

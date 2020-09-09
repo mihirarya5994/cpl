@@ -1,0 +1,15 @@
+<div class="match-list-component">
+  <div class="match-card" *ngFor="let match of matches; let i = index">
+    <app-match-card
+      [match]="match"
+      [type]="type"
+      (selection)="selectMatch(match)"
+      (joinRoom)="joinAnotherRoom($event)"
+      (showRoom)="showRoomDetails($event)"
+    ></app-match-card>
+    <app-ads
+      *ngIf="(i + 1) % 2 === 0 || matches.length === 1"
+      [contextName]="contextName"
+    ></app-ads>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<div class="team-view-component full" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="team-view-component full" *ngIf="!loading">
+  <section>
+    <div class="title">{{ "WICKET_KEEPER" | translate }}</div>
+    <div class="players-list">
+      <div
+        class="player scale-up-center"
+        *ngFor="let player of playersMap['wKeeper']"
+      >
+        <div class="icon-wrap">
+          <div class="img-wrap">
+            <img
+              src="assets/images/players/{{
+                player.icon || players[player.playerId].icon
+              }}"
+              alt=""
+            />
+          </div>
+          <div class="c-icn" *ngIf="player.captain">c</div>
+          <div class="c-icn" *ngIf="player.viceCaptain">vc</div>
+        </div>
+        <div class="player-name">
+          {{ player.playerName || players[player.playerId].playerName }}
+        </div>
+        <div class="player-points" *ngIf="match?.status === 'scheduled'">
+          {{ player.points || players[player.playerId].points }}
+        </div>
+        <div
+          class="player-points"
+          *ngIf="match?.status === 'started' || !match"
+        >
+          {{ player.eventPoints || 0 }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="title">{{ "BATSMAN" | translate }}</div>
+    <div class="players-list">
+      <div
+        class="player scale-up-center"
+        *ngFor="let player of playersMap['batsman']"
+      >
+        <div class="icon-wrap">
+          <div class="img-wrap">
+            <img
+              src="assets/images/players/{{
+                player.icon || players[player.playerId].icon
+              }}"
+              alt=""
+            />
+          </div>
+          <div class="c-icn" *ngIf="player.captain">c</div>
+          <div class="c-icn" *ngIf="player.viceCaptain">vc</div>
+        </div>
+        <div class="player-name">
+          {{ player.playerName || players[player.playerId].playerName }}
+        </div>
+        <div class="player-points" *ngIf="match?.status === 'scheduled'">
+          {{ player.points || players[player.playerId].points }}
+        </div>
+        <div
+          class="player-points"
+          *ngIf="match?.status === 'started' || !match"
+        >
+          {{ player.eventPoints || 0 }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="title">{{ "ALL_ROUNDER" | translate }}</div>
+    <div class="players-list">
+      <div
+        class="player scale-up-center"
+        *ngFor="let player of playersMap['allRounder']"
+      >
+        <div class="icon-wrap">
+          <div class="img-wrap">
+            <img
+              src="assets/images/players/{{
+                player.icon || players[player.playerId].icon
+              }}"
+              alt=""
+            />
+          </div>
+          <div class="c-icn" *ngIf="player.captain">c</div>
+          <div class="c-icn" *ngIf="player.viceCaptain">vc</div>
+        </div>
+        <div class="player-name">
+          {{ player.playerName || players[player.playerId].playerName }}
+        </div>
+        <div class="player-points" *ngIf="match?.status === 'scheduled'">
+          {{ player.points || players[player.playerId].points }}
+        </div>
+        <div
+          class="player-points"
+          *ngIf="match?.status === 'started' || !match"
+        >
+          {{ player.eventPoints || 0 }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="title">{{ "BOWLER" | translate }}</div>
+    <div class="players-list">
+      <div
+        class="player scale-up-center"
+        *ngFor="let player of playersMap['bowler']"
+      >
+        <div class="icon-wrap">
+          <div class="img-wrap">
+            <img
+              src="assets/images/players/{{
+                player.icon || players[player.playerId].icon
+              }}"
+              alt=""
+            />
+          </div>
+          <div class="c-icn" *ngIf="player.captain">c</div>
+          <div class="c-icn" *ngIf="player.viceCaptain">vc</div>
+        </div>
+        <div class="player-name">
+          {{ player.playerName || players[player.playerId].playerName }}
+        </div>
+        <div class="player-points" *ngIf="match?.status === 'scheduled'">
+          {{ player.points || players[player.playerId].points }}
+        </div>
+        <div
+          class="player-points"
+          *ngIf="match?.status === 'started' || !match"
+        >
+          {{ player.eventPoints || 0 }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="tp-text">{{ "TOTAL_POINTS" | translate }}</div>
+    <div class="tp-val">{{ totalPoints }}</div>
+  </section>
+</div>

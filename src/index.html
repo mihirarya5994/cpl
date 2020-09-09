@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Jio Fantasy League</title>
+    <base href="/" />
+    <script src="https://www.googletagmanager.com/ns.html?id=GTM-TDJBK5Z">
+      dataLayer = [{ appName: "Super Squad", env: "dev" }];
+    </script>
+
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TDJBK5Z");
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <app-root></app-root>
+    </div>
+
+    <script src="https://jioads.akamaized.net/SingleWEBSDK/stable/ad.js"></script>
+    <script type="text/javascript">
+      var VMAXSDK = VMAXSDK || {};
+
+      var ADCALLBACK = {
+        platform: "an"
+      };
+    </script>
+
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?
+        id=GTM-TDJBK5Z"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+  </body>
+</html>

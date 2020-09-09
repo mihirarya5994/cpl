@@ -1,0 +1,85 @@
+<div class="create-team-component full">
+  <div
+    class="scroll-content full"
+    [class.with-confirm-btn]="team.captain && team.viceCaptain"
+  >
+    <div class="select-captains-wrap">
+      <app-select-captains
+        [match]="match"
+        [team]="team"
+        (selection)="appointCaptains($event)"
+      ></app-select-captains>
+    </div>
+  </div>
+  <div
+    class="confirm-btn"
+    *ngIf="team.captain && team.viceCaptain"
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom"
+  >
+    <button
+      class="full-width"
+      type="button"
+      (click)="toggleConfirmationDialog()"
+    >
+      {{ "DONE" | translate }}
+    </button>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showConfirmationDialog">
+  <div class="bg full" (click)="toggleConfirmationDialog()"></div>
+  <div class="dialog">
+    <div class="header">{{ "CONFIRMATION" | translate }}</div>
+    <div class="body">
+      <div class="sponsor">
+        <div class="img-wrap">
+          <img src="assets/images/room-sponsors/{{ room.icon }}" alt="" />
+        </div>
+        <div class="points">
+          <div class="p-img-wrap">
+            <img src="assets/images/points_icn.png" alt="" />
+          </div>
+          <div class="value">{{ room.points }}</div>
+        </div>
+      </div>
+      <div class="message">
+        {{ "JOIN_ROOOM_CONFIRMATION_TEXT" | translate
+        }}<span>{{ room.name }}</span>
+        {{ "JOIN_ROOM_CONFIRMATION_ROOM_TEXT" | translate }}
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn cancel no-shadow" (click)="cancelJoining()">
+        {{ "CANCEL" | translate }}
+      </button>
+      <button
+        class="action-btn no-shadow"
+        (click)="createTeamAndJoinRoom(room)"
+      >
+        <span *ngIf="!confirming">{{ "CONFIRM" | translate }}</span>
+        <span *ngIf="confirming">{{ "PLEASE_WAIT" | translate }}</span>
+      </button>
+      <!-- <button class="action-btn no-shadow" *ngIf="joinedRooms > 0" (click)="joinAnotherRoom(room)">
+        Confirm
+      </button> -->
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showPointsInsufficientPopup">
+  <div class="bg full" (click)="toggleConfirmationDialog()"></div>
+  <div class="dialog">
+    <div class="header">{{ "LOW_POINTS" | translate }}</div>
+    <div class="body">
+      <div class="message low-points">
+        {{ "LOW_BALANCE_TEXT" | translate }}
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn no-shadow" (click)="close()">
+        {{ "OK" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

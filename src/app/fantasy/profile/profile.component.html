@@ -1,0 +1,100 @@
+<div class="profile-component full">
+  <section class="profile-pic-section">
+    <div class="profile-pic">
+      <div class="img-wrap">
+        <img src="assets/images/avatars/{{ profile.avatarImg || 'default_male.jpg' }}" />
+      </div>
+      <div class="change-pic-btn" (click)="toggleAvatarSelectionPopup()">
+        {{ 'CHG_PIC' | translate }}
+      </div>
+    </div>
+  </section>
+  <section class="profile-settings-section">
+    <div class="setting" *ngFor="let setting of settings">
+      <div class="left">
+        <label>{{ setting.label }}</label>
+        <div class="value">{{ setting.value | translate }}</div>
+      </div>
+      <div class="right">
+        <div class="img-wrap" (click)="toggleEditPopup(setting)">
+          <img src="assets/images/edit_icn.png" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-ads [contextName]="'USER_PROFILE'"></app-ads>
+</div>
+
+<app-avatar-selection
+  *ngIf="showAvatarSelectionPopup"
+  (close)="toggleAvatarSelectionPopup()"
+></app-avatar-selection>
+
+<div class="edit-popup full" *ngIf="showEditPopup">
+  <div class="popup-bg full" (click)="toggleEditPopup()"></div>
+  <div class="popup-content" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+    <div class="header">{{ editSetting.editForm.header }}</div>
+    <div class="content" *ngIf="editSetting.type === 'nickName'">
+      <div class="section">
+        <div class="desc">
+          {{ editSetting.editForm.desc }}
+        </div>
+        <div class="control-wrap">
+          <input
+            type="text"
+            placeholder="{{ editSetting.editForm.placeholder }}"
+            [(ngModel)]="inpNickName"
+            required
+            pattern="^(?=.*[a-zA-Z_])([a-zA-Z0-9_]+)$"
+            minlength="2"
+            maxlength="14"
+            #nameField="ngModel"
+          />
+
+          <div class="validation-error" *ngIf="nameField.errors?.pattern">
+            Only Alphanumeric characters allowed
+          </div>
+          <div class="validation-error" *ngIf="nameField.errors?.minlength">
+            Minimum 2 characters needed
+          </div>
+          <div class="validation-error" *ngIf="nameField.errors?.maxlength">
+            Maximum 14 characters allowed
+          </div>
+        </div>
+        <div class="info">{{ editSetting.editForm.info }}</div>
+      </div>
+      <div class="action">
+        <button
+          type="button"
+          [class.disabled]="nameField.errors"
+          (click)="updateProfile(editSetting)"
+        >
+          {{ 'SAVE' | translate }}
+        </button>
+      </div>
+    </div>
+    <div class="content no-padding" *ngIf="editSetting.type !== 'nickName'">
+      <div class="section no-margin">
+        <div class="control-wrap" *ngIf="editSetting.type === 'nickName'">
+          <input
+            type="text"
+            placeholder="{{ editSetting.editForm.placeholder }}"
+            [(ngModel)]="editSetting.value"
+          />
+        </div>
+        <div class="control-wrap" *ngIf="editSetting.type !== 'nickName'">
+          <div
+            class="option"
+            [class.selected]="option.selected"
+            *ngFor="let option of editSetting.editForm.options"
+            (click)="updateProfile(editSetting, option)"
+          >
+            <img src="assets/images/check_filled.png" *ngIf="editSetting.value === option.value" />
+            <img src="assets/images/check_empty.png" *ngIf="editSetting.value !== option.value" />
+            {{ option.title }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

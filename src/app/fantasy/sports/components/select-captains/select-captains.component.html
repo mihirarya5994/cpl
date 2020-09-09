@@ -1,0 +1,63 @@
+<app-ads [contextName]="'SELECT_CAPTAIN_VICE_CAPTAIN'"></app-ads>
+
+<div class="select-captains-component">
+  <div class="title">{{ "SELECT_C_N_VC" | translate }}</div>
+  <div class="sub-title">
+    <div class="captain-points">
+      <div class="text">{{ "CAPTAIN" | translate }} = &nbsp;</div>
+      <div class="points">
+        <div class="img-wrap">
+          <img src="assets/images/points_icn.png" />
+          {{ match.validations.captainMulti }}x
+        </div>
+      </div>
+    </div>
+    <div class="separator">|</div>
+    <div class="captain-points">
+      <div class="text">{{ "VICE_CAPTAIN" | translate }} = &nbsp;</div>
+      <div class="points">
+        <div class="img-wrap">
+          <img src="assets/images/points_icn.png" />
+          {{ match.validations.viceCaptainMulti }}x
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="players-list">
+    <div class="player" *ngFor="let player of team.players">
+      <div class="left">
+        <div class="icon-wrap">
+          <div class="team-icon">
+            <img src="assets/images/teams/{{ player.team.icon }}" />
+          </div>
+          <div class="player-img">
+            <img src="assets/images/players/{{ player.icon }}" />
+          </div>
+        </div>
+        <div class="details">
+          <div class="name">{{ player.playerName }}</div>
+          <div class="skill">{{ player.skill | showSkill | translate }}</div>
+          <div class="points">{{ player.playerPoints }}</div>
+        </div>
+      </div>
+      <div class="actions">
+        <div
+          class="c-btn"
+          [class.selected]="team.captain === player.playerId"
+          [class.disabled]="team.viceCaptain === player.playerId"
+          (click)="select('captain', player, 'Captain')"
+        >
+          C
+        </div>
+        <div
+          class="c-btn"
+          [class.selected]="team.viceCaptain === player.playerId"
+          [class.disabled]="team.captain === player.playerId"
+          (click)="select('viceCaptain', player, 'Vice-Captain')"
+        >
+          VC
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

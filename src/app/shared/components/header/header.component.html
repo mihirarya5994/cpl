@@ -1,0 +1,31 @@
+<div
+  class="header-component d-flex align-items-center justify-content-between"
+  [class.isTeamPreview]="isTeampreview"
+>
+  <div class="back d-flex align-items-center" (click)="back()">
+    <img src="assets/images/back.png" alt="" />
+  </div>
+  <div class="logo-wrap d-flex justify-content-center">
+    <img src="assets/images/jio_logo.svg" alt="" />
+  </div>
+  <div
+    class="points-wrap d-flex justify-content-end align-items-center"
+    *ngIf="!isTeampreview || (isTeampreview && !isMatchLive)"
+  >
+    <div class="points-value text-right">
+      <div class="text">{{ "POINTS" | translate }}</div>
+      <div class="value">{{ data.score || 0 | number }}</div>
+    </div>
+    <div class="img-wrap">
+      <img src="assets/images/points_icn.png" alt="" />
+    </div>
+  </div>
+
+  <div class="refresh" (click)="refreshPlayerPoints()" *ngIf="isMatchLive">
+    <img src="assets/images/refresh.svg" alt="" />
+  </div>
+</div>
+
+<div class="exiPopup" *ngIf="showExitpopup">
+  <app-exit-popup (action)="handleExitPopupAction($event)"></app-exit-popup>
+</div>

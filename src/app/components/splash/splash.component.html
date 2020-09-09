@@ -1,0 +1,59 @@
+<div class="splash-component full">
+  <div class="top">
+    <div class="jio-logo-wrap">
+      <img src="assets/images/splash/jio_logo_big.svg" />
+    </div>
+    <div class="logo-wrap">
+      <img src="assets/images/splash/fantasy_logo.png" />
+    </div>
+  </div>
+  <div
+    class="footer"
+    *ngIf="showBottomwrap"
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom"
+  >
+    <div class="middle">
+      <!-- <div class="partners">{{ 'ASSOCIATE_SPONSOR' | translate }}</div>
+      <div class="img-wrap">
+        <img src="assets/images/splash/mobikwik.png" />
+      </div>
+      <div class="sponsors p-2">
+        <app-sponsors></app-sponsors>
+      </div> -->
+      <app-ads [contextName]="'SPLASH_SCREEN'"></app-ads>
+    </div>
+    <div class="disclaimer">
+      <span>
+        <div
+          class="tick-box"
+          (click)="isCheckBoxTicked = !isCheckBoxTicked"
+          [class.ticked]="isCheckBoxTicked"
+        >
+          <img
+            *ngIf="isCheckBoxTicked"
+            src="assets/images/splash/tick.svg"
+            alt=""
+          />
+        </div>
+      </span>
+      <span>{{ "DISCLAIMER" | translate }}</span>
+      <span class="tnc" (click)="showTnc()">{{ "TNC" | translate }}</span>
+    </div>
+    <button
+      type="button"
+      [disabled]="!isCheckBoxTicked"
+      class="play-now-button primary full-width no-shadow"
+      (click)="play()"
+    >
+      {{ "PLAY_NOW" | translate }}
+    </button>
+  </div>
+</div>
+
+<app-profile-capture
+  *ngIf="showProfileCapturePopup"
+  [profile]="profile"
+  (close)="toggleProfileCapturePopup()"
+>
+</app-profile-capture>

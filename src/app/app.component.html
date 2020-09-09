@@ -1,0 +1,15 @@
+<div class="app-component full">
+  <div class="route-content full">
+    <router-outlet>
+      <div
+        class="not-logged-in full d-flex align-items-center justify-content-center"
+        *ngIf="!authService.getIsAuthenticated()"
+      >
+        Please wait...
+      </div>
+    </router-outlet>
+  </div>
+</div>
+<app-full-page-ads></app-full-page-ads>
+<app-demo (close)="demoCompleted()"></app-demo>
+<app-daily-reward-popup></app-daily-reward-popup>

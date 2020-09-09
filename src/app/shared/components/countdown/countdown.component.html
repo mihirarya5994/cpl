@@ -1,0 +1,15 @@
+<div class="countdown-component">
+  <span class="time" *ngIf="countdown.days > 0">{{
+    countdown.days | pad
+  }}</span>
+  <span class="separator" *ngIf="countdown.days > 0">:</span>
+  <span class="time" *ngIf="countdown.hours > 0 || countdown.days > 0">{{
+    countdown.hours | pad
+  }}</span>
+  <span class="separator" *ngIf="countdown.hours > 0 || countdown.days > 0"
+    >:</span
+  >
+  <span class="time">{{ countdown.minutes | pad }}</span>
+  <span class="separator">:</span>
+  <span class="time">{{ countdown.seconds | pad }}</span>
+</div>

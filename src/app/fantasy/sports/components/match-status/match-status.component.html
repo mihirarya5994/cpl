@@ -1,0 +1,58 @@
+<div class="players" *ngIf="!feed">
+  <app-loader></app-loader>
+</div>
+<div class="players" *ngIf="feed">
+  <div class="player scale-up-center" *ngIf="(players?.batsmen)[0]" data-aos="fade-in">
+    <div class="img-wrap">
+      <img
+        src="assets/images/players/{{ (players?.batsmen)[0]?.team_code }}/{{
+          (players?.batsmen)[0]?.icon
+        }}"
+      />
+    </div>
+    <div class="name">{{ (players?.batsmen)[0]?.playerName }}</div>
+    <div class="score">
+      <img src="assets/images/small_bat.png" *ngIf="(players?.batsmen)[0].onStrike" />{{
+        (players?.batsmen)[0]?.value
+      }}
+    </div>
+  </div>
+  <div class="player scale-up-center" *ngIf="(players?.batsmen)[1]" data-aos="fade-in">
+    <div class="img-wrap">
+      <img
+        src="assets/images/players/{{ (players?.batsmen)[1]?.team_code }}/{{
+          (players?.batsmen)[1]?.icon
+        }}"
+      />
+    </div>
+    <div class="name">{{ (players?.batsmen)[1]?.playerName }}</div>
+    <div class="score">
+      <img src="assets/images/small_bat.png" *ngIf="(players?.batsmen)[1].onStrike" />{{
+        (players?.batsmen)[1]?.value
+      }}
+    </div>
+  </div>
+  <div class="player scale-up-center" *ngIf="(players?.bowlers)[0]" data-aos="fade-in">
+    <div class="img-wrap">
+      <img
+        src="assets/images/players/{{ (players?.bowlers)[0]?.team_code }}/{{
+          (players?.bowlers)[0]?.icon
+        }}"
+      />
+    </div>
+    <div class="name">
+      {{ (players?.bowlers)[0].playerName }}
+    </div>
+    <div class="score">
+      <img src="assets/images/small_ball.png" *ngIf="(players?.bowlers)[0].onStrike" />{{
+        (players?.bowlers)[0]?.value
+      }}
+    </div>
+  </div>
+  <div class="result" *ngIf="feed?.event_status === 'Match Ended'">
+    {{ 'MATCH_ENDED' | translate }}
+  </div>
+  <div class="result" *ngIf="feed?.event_status === 'Innings Break'">
+    {{ 'INNINGS_BREAK' | translate }}
+  </div>
+</div>

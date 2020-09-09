@@ -1,0 +1,21 @@
+{
+  "API_HOST": "https://fantasyadmin.jioengageapps.com/fsapi",
+  "PROFILE_API_HOST": "https://uatapi.jiokhelo.com",
+  "PARTICIPANT_API_HOST": "https://ipldev.jiokhelo.com/api",
+  "COUPON_API_HOST": "https://couponadminsit.jiokhelo.com/coupon/api",
+  "SOCKET_CLUSTER_HOST": "fantasyadmin.jioengageapps.com",
+  "SOCKET_CLUSTER_PORT": "80",
+  "ENABLE_LOGS": true,
+  "SHARE_MESSAGE": "share message.",
+  "SPLASH_TIMEOUT": 0,
+  "HOW_TO_PLAY_URL": "https://www.jio.com/en-in/apps/jio-cricket-play-along#section0",
+  "FAQ_URL": "https://www.jio.com/en-in/apps/jio-cricket-play-along#section13",
+  "TNC_URL": "https://www.jio.com/en-in/apps/jio-cricket-play-along#tnc",
+  "JCPA_URL": "https://www.jio.com/app29",
+  "SI_SCORE_CARD_URL": "https://jioipl.akamaized.net/sifeeds/myjio/cricket/batting-scorecard.html?gamecode=$1&lang=$2",
+  "LEADERBOARD_REFRESH_INTERVAL": 10000,
+  "APP_NAME": "Supersquad",
+  "BALL_BY_BALL_URL": "https://www.jio.com/app29",
+  "5_OVERS_URL": "https://www.jio.com/app29",
+  "ENV": "dev"
+}

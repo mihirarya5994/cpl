@@ -1,0 +1,564 @@
+{
+  "sync_time": [3000],
+  "login": { "token": "something", "success": true },
+  "allSports": [
+    {
+      "id": "cricket",
+      "title": "Cricket",
+      "icon": "cricket_icn.png",
+      "activeIcon": "cricket_icn_active.png"
+    },
+    {
+      "id": "football",
+      "title": "Football",
+      "icon": "football_icn.png",
+      "activeIcon": "football_icn_active.png"
+    },
+    {
+      "id": "kabaddi",
+      "title": "Kabaddi",
+      "icon": "kabaddi_icn.png",
+      "activeIcon": "kabaddi_icn_active.png"
+    },
+    {
+      "id": "hockey",
+      "title": "Hockey",
+      "icon": "hockey_icn.png",
+      "activeIcon": "hockey_icn_active.png"
+    }
+  ],
+  "sponsors": [
+    "Ajio.png",
+    "mobikwik.png",
+    "emt.png",
+    "fp.png",
+    "ixigo.png",
+    "jockey.png",
+    "lenskart.png",
+    "mod.png",
+    "myntra.png",
+    "peter_england.png",
+    "vlcc.png",
+    "zoomcar.png",
+    "bookmyshow.png",
+    "DocsApp.png",
+    "Talwalkar.jpg",
+    "NETMEDS.png",
+    "Lybrate.png",
+    "imagica.png",
+    "FaintainSports.png",
+    "floweraura.png",
+    "OYO.png",
+    "emtjio.png",
+    "oyowiz8060.png",
+    "zoomcar_logo.png"
+  ],
+  "sports": {
+    "cricket": [
+      {
+        "id": 1,
+        "when": "1559070520979",
+        "participants": [
+          { "name": "India", "code": "IND", "icon": "ind.png" },
+          { "name": "Australia", "code": "AUS", "icon": "aus.png" }
+        ]
+      },
+      {
+        "id": 2,
+        "when": "1559070520979",
+        "participants": [
+          { "name": "New Zealand", "code": "NZ", "icon": "nz.png" },
+          { "name": "Sri Lanka", "code": "SL", "icon": "sl.png" }
+        ]
+      }
+    ],
+    "football": [
+      {
+        "id": 1,
+        "when": "1559070520979",
+        "participants": [
+          {
+            "name": "Manchester United",
+            "code": "IND",
+            "icon": "ind.png"
+          },
+          {
+            "id": 2,
+            "name": "Arsenal",
+            "code": "AUS",
+            "icon": "aus.png"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "when": "1559070520979",
+        "participants": [
+          {
+            "name": "Barcelona",
+            "code": "NZ",
+            "icon": "nz.png"
+          },
+          {
+            "name": "Brentford",
+            "code": "SL",
+            "icon": "sl.png"
+          }
+        ]
+      }
+    ],
+    "kabaddi": [
+      {
+        "id": 1,
+        "when": "1559070520979",
+        "participants": [
+          {
+            "name": "Gujrat",
+            "code": "IND",
+            "icon": "ind.png"
+          },
+          {
+            "name": "Delhi",
+            "code": "AUS",
+            "icon": "aus.png"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "when": "1559070520979",
+        "participants": [
+          {
+            "name": "Mumbai",
+            "code": "NZ",
+            "icon": "nz.png"
+          },
+          {
+            "name": "Pune",
+            "code": "SL",
+            "icon": "sl.png"
+          }
+        ]
+      }
+    ],
+    "hockey": [
+      {
+        "id": 1,
+        "when": "1559070520979",
+        "participants": [
+          {
+            "name": "AC",
+            "code": "IND",
+            "icon": "ind.png"
+          },
+          {
+            "name": "DB",
+            "code": "AUS",
+            "icon": "aus.png"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "when": "1559070520979",
+        "participants": [
+          {
+            "name": "BB",
+            "code": "NZ",
+            "icon": "nz.png"
+          },
+          {
+            "name": "CBJ",
+            "code": "SL",
+            "icon": "sl.png"
+          }
+        ]
+      }
+    ]
+  },
+  "genders": [
+    {
+      "translationKey": "male",
+      "title": "Male",
+      "value": "male"
+    },
+    {
+      "translationKey": "female",
+      "title": "Female",
+      "value": "female"
+    },
+    {
+      "translationKey": "other",
+      "title": "Other",
+      "value": "other"
+    }
+  ],
+  "ageGroups": [
+    {
+      "translationKey": "18_22",
+      "title": "",
+      "value": "18-22"
+    },
+    {
+      "translationKey": "23_30",
+      "title": "",
+      "value": "23-30"
+    },
+    {
+      "translationKey": "31_40",
+      "title": "",
+      "value": "31-40"
+    },
+    {
+      "translationKey": "41_50",
+      "title": "",
+      "value": "41-50"
+    },
+    {
+      "translationKey": "51_60",
+      "title": "",
+      "value": "51-60"
+    },
+    {
+      "translationKey": "60+",
+      "title": "",
+      "value": "Above 60"
+    }
+  ],
+  "states": [
+    {
+      "translationKey": "Andhra Pradesh",
+      "title": "",
+      "value": "Andhra Pradesh"
+    },
+    {
+      "translationKey": "Arunachal Pradesh",
+      "title": "",
+      "value": "Arunachal Pradesh"
+    },
+    {
+      "translationKey": "Assam",
+      "title": "",
+      "value": "Assam"
+    },
+    {
+      "translationKey": "Bihar",
+      "title": "",
+      "value": "Bihar"
+    },
+    {
+      "translationKey": "Chhattisgarh",
+      "title": "",
+      "value": "Chhattisgarh"
+    },
+    {
+      "translationKey": "Goa",
+      "title": "",
+      "value": "Goa"
+    },
+    {
+      "translationKey": "Gujarat",
+      "title": "",
+      "value": "Gujarat"
+    },
+    {
+      "translationKey": "Haryana",
+      "title": "",
+      "value": "Haryana"
+    },
+    {
+      "translationKey": "Himachal Pradesh",
+      "title": "",
+      "value": "Himachal Pradesh"
+    },
+    {
+      "translationKey": "Jammu & Kashmir",
+      "title": "",
+      "value": "Jammu & Kashmir"
+    },
+    {
+      "translationKey": "Jharkhand",
+      "title": "",
+      "value": "Jharkhand"
+    },
+    {
+      "translationKey": "Karnataka",
+      "title": "",
+      "value": "Karnataka"
+    },
+    {
+      "translationKey": "Kerala",
+      "title": "",
+      "value": "Kerala"
+    },
+    {
+      "translationKey": "Madhya Pradesh",
+      "title": "",
+      "value": "Madhya Pradesh"
+    },
+    {
+      "translationKey": "Maharashtra",
+      "title": "",
+      "value": "Maharashtra"
+    },
+    {
+      "translationKey": "Manipur",
+      "title": "",
+      "value": "Manipur"
+    },
+    {
+      "translationKey": "Meghalaya",
+      "title": "",
+      "value": "Meghalaya"
+    },
+    {
+      "translationKey": "Mizoram",
+      "title": "",
+      "value": "Mizoram"
+    },
+    {
+      "translationKey": "Nagaland",
+      "title": "",
+      "value": "Nagaland"
+    },
+    {
+      "translationKey": "Odisha",
+      "title": "",
+      "value": "Odisha"
+    },
+    {
+      "translationKey": "Punjab",
+      "title": "",
+      "value": "Punjab"
+    },
+    {
+      "translationKey": "Rajasthan",
+      "title": "",
+      "value": "Rajasthan"
+    },
+    {
+      "translationKey": "Sikkim",
+      "title": "",
+      "value": "Sikkim"
+    },
+    {
+      "translationKey": "Tamil Nadu",
+      "title": "",
+      "value": "Tamil Nadu"
+    },
+    {
+      "translationKey": "Telangana",
+      "title": "",
+      "value": "Telangana"
+    },
+    {
+      "translationKey": "Tripura",
+      "title": "",
+      "value": "Tripura"
+    },
+    {
+      "translationKey": "Uttar Pradesh",
+      "title": "",
+      "value": "Uttar Pradesh"
+    },
+    {
+      "translationKey": "Uttarakhand",
+      "title": "",
+      "value": "Uttarakhand"
+    },
+    {
+      "translationKey": "West Bengal",
+      "title": "",
+      "value": "West Bengal"
+    },
+    {
+      "translationKey": "Andaman & Nicobar",
+      "title": "",
+      "value": "Andaman & Nicobar"
+    },
+    {
+      "translationKey": "Chandigarh",
+      "title": "",
+      "value": "Chandigarh"
+    },
+    {
+      "translationKey": "Dadra & Nagar Haveli",
+      "title": "",
+      "value": "Dadra & Nagar Haveli"
+    },
+    {
+      "translationKey": "Daman & Diu",
+      "title": "",
+      "value": "Daman & Diu"
+    },
+    {
+      "translationKey": "Lakshadweep",
+      "title": "",
+      "value": "Lakshadweep"
+    },
+    {
+      "translationKey": "Pondicherry",
+      "title": "",
+      "value": "Pondicherry"
+    },
+    {
+      "translationKey": "Delhi",
+      "title": "",
+      "value": "Delhi"
+    }
+  ],
+  "languages": [
+    {
+      "title": "ENGLISH",
+      "value": "eng"
+    },
+    {
+      "title": "HINDI",
+      "value": "hin"
+    }
+  ],
+  "ads": {
+    "SPLASH_SCREEN": {
+      "type": "billboard",
+      "adId": "44c2f20c"
+    },
+    "MATCH_LIST": {
+      "type": "billboard",
+      "adId": "44c2f20c"
+    },
+    "JOIN_ROOM_LISTING_BANNER": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "JOIN_ROOM_LISTING_BILLBOARD": {
+      "type": "billboard",
+      "adId": "44c2f20c"
+    },
+    "JOIN_ROOM_CONFIRMATION": {
+      "type": "billboard",
+      "adId": "44c2f20c"
+    },
+    "USER_ROOMS_LISTING": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "USER_ROOMS_SELECTION": {
+      "type": "billboard",
+      "adId": "44c2f20c"
+    },
+    "ROOM_CREATE_TEAM_CAP_CONFIRM": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "ROOM_DETAILS": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "USER_SETTINGS": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "USER_PROFILE": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "SELECT_CAPTAIN_VICE_CAPTAIN": {
+      "type": "banner",
+      "adId": "33c5c29a"
+    },
+    "INSTREAM_ROOM_JOIN": {
+      "type": "Instream Video",
+      "adId": "613429fd"
+    }
+  },
+  "avatars": [
+    {
+      "id": 1,
+      "imgUrl": "default_male.jpg"
+    },
+    {
+      "id": 2,
+      "imgUrl": "default_female.jpg"
+    },
+    {
+      "id": 3,
+      "imgUrl": "afghanistan_f.png"
+    },
+    {
+      "id": 4,
+      "imgUrl": "afghanistan_m.png"
+    },
+    {
+      "id": 5,
+      "imgUrl": "australia_f.png"
+    },
+    {
+      "id": 6,
+      "imgUrl": "australia_m.png"
+    },
+    {
+      "id": 7,
+      "imgUrl": "bangladesh_f.png"
+    },
+    {
+      "id": 8,
+      "imgUrl": "bangladesh_m.png"
+    },
+    {
+      "id": 9,
+      "imgUrl": "england_f.png"
+    },
+    {
+      "id": 10,
+      "imgUrl": "england_m.png"
+    },
+    {
+      "id": 11,
+      "imgUrl": "india_f.png"
+    },
+    {
+      "id": 12,
+      "imgUrl": "india_m.png"
+    },
+    {
+      "id": 13,
+      "imgUrl": "newzealand_f.png"
+    },
+    {
+      "id": 14,
+      "imgUrl": "newzealand_m.png"
+    },
+    {
+      "id": 15,
+      "imgUrl": "pakistan_f.png"
+    },
+    {
+      "id": 16,
+      "imgUrl": "pakistan_m.png"
+    },
+    {
+      "id": 17,
+      "imgUrl": "southafrica_f.png"
+    },
+    {
+      "id": 18,
+      "imgUrl": "southafrica_m.png"
+    },
+    {
+      "id": 19,
+      "imgUrl": "srilanka_f.png"
+    },
+    {
+      "id": 20,
+      "imgUrl": "srilanka_m.png"
+    },
+    {
+      "id": 21,
+      "imgUrl": "westindies_f.png"
+    },
+    {
+      "id": 22,
+      "imgUrl": "westindies_m.png"
+    }
+  ]
+}

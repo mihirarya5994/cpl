@@ -1,0 +1,46 @@
+<div class="edit-team-component full">
+  <div class="header">
+    {{ "MY_TEAM" | translate }}
+  </div>
+  <div class="list">
+    <div class="tile" *ngFor="let player of allPlayers">
+      <div class="icon">
+        <div class="team-logo">
+          <img src="assets/images/teams/{{ player.teamIcon }}" />
+        </div>
+        <div class="role" *ngIf="player.captain">c</div>
+        <div class="role" *ngIf="player.viceCaptain">vc</div>
+        <div class="player-img">
+          <img src="assets/images/players/{{ player.icon }}" alt="" />
+        </div>
+        <div
+          class="player-status"
+          *ngIf="player.status"
+          [class.not-playing]="player.status === 'notplaying'"
+        >
+          <span *ngIf="player.status === 'playing'">{{
+            "PLAYING" | translate
+          }}</span>
+          <span *ngIf="player.status === 'notplaying'">{{
+            "NOT_PLAYING" | translate
+          }}</span>
+        </div>
+      </div>
+      <div class="name">{{ player.playerName }}</div>
+      <div class="skill">
+        {{ player.skill | showSkill | translate }}
+      </div>
+      <div class="points-box">
+        <div class="text">{{ "PLAYER_POINTS" | translate }}</div>
+        <div class="points">{{ player.points }}</div>
+      </div>
+      <button
+        type="button"
+        class="change-btn"
+        (click)="editPlayer(player.skill)"
+      >
+        {{ "CHANGE" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="sports-view-component full">
+  <!-- <div class="sports-bar">
+    <app-sports-bar (selection)="selectSport($event)"></app-sports-bar>
+  </div> -->
+  <div class="match-list" *ngIf="matches.length; else loadingEl">
+    <ng-container *ngIf="matches.length; else noDataEl">
+      <app-jcpa-tile [games]="jcpaLauncherGame"></app-jcpa-tile>
+      <div class="p-3">
+        <div class="title">{{ "UPCOMING_MATCHES" | translate }}</div>
+        <app-match-list
+          [matches]="matches"
+          (selection)="navigate($event)"
+          [type]="'new'"
+          [contextName]="'MATCH_LIST'"
+        ></app-match-list>
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #noDataEl>
+    <div class="no-data">
+      <div class="img">
+        <img src="assets/images/no_match.png" />
+      </div>
+      <div class="text pt-3 text-center">{{ "NO_MATCHES" | translate }}</div>
+    </div>
+  </ng-template>
+  <ng-template #loadingEl>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

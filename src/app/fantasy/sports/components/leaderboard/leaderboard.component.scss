@@ -1,0 +1,119 @@
+@import "mixins";
+
+.leaderboard {
+  padding-bottom: 1rem;
+  position: relative;
+  min-height: 150px;
+
+  &.started {
+    .rank-table {
+      border-radius: 0;
+    }
+  }
+  .header {
+    @include flex-container(space-between);
+    padding-bottom: 0.8rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-family: MontserratBold;
+    .text-1 {
+      color: #aaaaaa;
+    }
+    .text-2 {
+      color: #3c3c3c;
+    }
+  }
+  .rank-table {
+    background: #fff;
+    border-radius: 6px;
+    .table-header {
+      padding: 0.8rem;
+      @include flex-container(space-between);
+      text-transform: uppercase;
+      font-family: PoppinsSemiBold;
+      .left {
+        flex: 2;
+        .total-teams {
+          font-size: 0.75rem;
+          color: #8d8b91;
+        }
+        .teams-count {
+          margin-top: -4px;
+          font-size: 0.85rem;
+        }
+      }
+      .middle {
+        flex: 1;
+        color: #8d8b90;
+        font-size: 0.9rem;
+      }
+      .right {
+        flex: 1;
+        color: #8d8b90;
+        font-size: 0.9rem;
+      }
+    }
+    .table-body {
+      .table-row {
+        padding: 0.8rem;
+        @include flex-container(space-between);
+        &:nth-child(odd) {
+          background: #ececec;
+        }
+        &.me {
+          background: #5f00f8;
+          .left {
+            flex: 2;
+            .player-info {
+              .player-name {
+                color: #fff;
+              }
+              .player-loc {
+                color: #a26bfb;
+              }
+            }
+          }
+          .middle {
+            flex: 1;
+            color: #fccf2c;
+          }
+          .right {
+            flex: 1;
+            color: #fccf2c;
+          }
+        }
+        .left {
+          display: flex;
+          flex: 2;
+          .img-wrap {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: #d1d1d1;
+            overflow: hidden;
+            margin-right: 5px;
+          }
+          .player-info {
+            @include flex-container(center);
+            flex-direction: column;
+            align-items: flex-start;
+            .player-name {
+              font-family: PoppinsSemiBold;
+              font-size: 1.1rem;
+            }
+            .player-loc {
+              font-size: 0.7rem;
+              text-transform: uppercase;
+            }
+          }
+        }
+        .middle {
+          flex: 1;
+        }
+        .right {
+          flex: 1;
+        }
+      }
+    }
+  }
+}

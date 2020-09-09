@@ -1,0 +1,36 @@
+.sports-view-component {
+  overflow-x: hidden;
+  .sports-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+  }
+  .match-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    .title {
+      color: #aaaaaa;
+      text-transform: uppercase;
+      font-family: MontserratBold;
+      font-size: 1.04rem;
+      margin: 0 0 0.3rem;
+    }
+  }
+  .no-data {
+    opacity: 0.5;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .img {
+      width: 10rem;
+    }
+  }
+}

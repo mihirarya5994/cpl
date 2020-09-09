@@ -1,0 +1,26 @@
+<div class="avatar-selection-component">
+  <div class="popup-bg"></div>
+  <div class="popup-content">
+    <div class="title">
+      <div class="text">
+        {{ 'SELECT_PROF_PIC' | translate }}
+      </div>
+      <img src="assets/images/normal_close.png" (click)="closePopup()" />
+    </div>
+    <div class="avatar-list" *ngIf="avatars.length">
+      <div
+        class="avatar"
+        [class.selected]="avatar.id === profile.avatar"
+        *ngFor="let avatar of avatars"
+        (click)="selectAvatar(avatar)"
+      >
+        <div class="avatar-wrap">
+          <img src="assets/images/avatars/{{ avatar.imgUrl }}" />
+        </div>
+        <div class="check-wrap" *ngIf="avatar.id === profile.avatar">
+          <img src="assets/images/correct.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

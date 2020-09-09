@@ -1,0 +1,13 @@
+<div class="daily-reward-popup full "
+*ngIf="showReward"
+>
+  <div class="container">
+    <div class="heading-text">{{ 'CONGRATULATIONS' | translate }}</div>
+    <div class="text">{{ 'DAILY_REWARD_TEXT' | translate }}</div>
+    <div class="points">
+      <span><img class="points-logo" src="assets/images/points_icn.png" alt=""></span>
+      <span>{{ dailyRewardPoint }}</span> 
+    </div>
+    <div class="continue-btn" (click)="continue()">{{ 'CONTINUE' | translate }}</div>
+  </div>
+</div>

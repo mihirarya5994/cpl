@@ -1,0 +1,20 @@
+@import 'mixins';
+
+.caps {
+  background: url(/assets/images/v_strip.png) no-repeat center center;
+  background-size: contain;
+  height: 4rem;
+  margin: 0 5px;
+  position: relative;
+  bottom: -10px;
+  @include flex-container(space-around);
+  padding: 0 1.5rem;
+  z-index: 2;
+  .cap {
+    @include flex-container(center);
+    .img-wrap {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="score-card-component">
+  <div class="content">
+    <div class="d-flex w-100 align-items-center justify-content-between" *ngIf="data.gameId">
+      <div class="team">
+        <div class="logo"><img src="assets/images/teams/{{ data?.battingTeam?.icon }}" /></div>
+        <div class="team-content">
+          <div class="name">{{ data?.battingTeam?.short_name }}</div>
+          <div class="score">{{ data?.battingTeam?.value }}</div>
+        </div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="team">
+        <div class="team-content">
+          <div class="name">{{ data?.bowlingTeam?.short_name }}</div>
+          <div class="score">{{ data?.bowlingTeam?.value }}</div>
+        </div>
+        <div class="logo"><img src="assets/images/teams/{{ data?.bowlingTeam?.icon }}" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="score-card" (click)="toggleFullScoreCard()">
+    <span class="text">{{ 'FULL_SC' | translate }}</span
+    ><img src="assets/images/score_arrow.png" />
+  </div>
+</div>
+
+<app-full-score-card
+  *ngIf="showFullScoreCard"
+  (close)="toggleFullScoreCard()"
+></app-full-score-card>

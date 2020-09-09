@@ -1,0 +1,121 @@
+@import "mixins";
+
+.edit-team-component {
+  overflow-y: auto;
+  padding: 1rem;
+  font-family: PoppinsSemiBold;
+  .header {
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #bab7c1;
+    padding-bottom: 0.75rem;
+  }
+  .list {
+    @include flex-container(space-around);
+    flex-wrap: wrap;
+    padding: 1.5rem 0;
+    .tile {
+      @include flex-container(space-around);
+      @include box-shadow;
+      box-shadow: 0 3px 5px #bbb;
+      background: #fff;
+      width: 31%;
+      border-radius: 5px;
+      flex-direction: column;
+      margin: 2rem 0.25rem 1rem;
+      text-transform: uppercase;
+      padding: 0.5rem;
+      height: 13rem;
+      .icon {
+        width: 75%;
+        position: relative;
+        margin-top: -2.5rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .team-logo {
+          @include flex-container(center);
+          position: absolute;
+          width: 1.7rem;
+          height: 1.7rem;
+          top: 0;
+          left: 0;
+          background: #fff;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+        .role {
+          @include flex-container(center);
+          position: absolute;
+          width: 1.7rem;
+          height: 1.7rem;
+          top: 0;
+          left: 70%;
+          background: #489118;
+          border-radius: 50%;
+          right: 1rem;
+          color: white;
+          font-size: 0.8rem;
+        }
+        .player-img {
+          border: solid 2px white;
+          border-radius: 50%;
+          overflow: hidden;
+          background: #e4dfdf;
+          box-shadow: 0 0 3px #ccc;
+        }
+        .player-status {
+          background: #489118;
+          padding: 1px 5px;
+          border-radius: 10px;
+          font-size: 0.55rem;
+          color: white;
+          text-transform: uppercase;
+          text-align: center;
+          position: absolute;
+          bottom: -2px;
+          &.not-playing {
+            background: #ea0035;
+          }
+        }
+      }
+      .name {
+        line-height: 1rem;
+        padding-top: 5px;
+        text-align: center;
+        font-family: PoppinsBold;
+        color: #3F3F3F;
+      }
+      .skill {
+        color: #9176C7;
+        font-size: 0.7rem;
+      }
+      .points-box {
+        background: #E8E8E8;
+        text-align: center;
+        width: 100%;
+        margin: 0.5rem 0;
+        .text {
+          font-size: 0.6rem;
+          padding-top: 3px;
+          color: #717171;
+        }
+        .points {
+          font-size: 1.1rem;
+          color: #5726BD;
+          margin-top: -5px;
+        }
+      }
+      .change-btn {
+        background: #CA4208;
+        padding: 6px;
+        text-align: center;
+        border-radius: 25px;
+        color: white;
+        font-size: 0.7rem;
+        width: 100%;
+      }
+    }
+  }
+}

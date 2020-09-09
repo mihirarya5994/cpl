@@ -1,0 +1,75 @@
+.team-view-component {
+  background: #7419FA;
+  text-align: center;
+  text-transform: uppercase;
+  overflow-y: auto;
+  font-family: MontserratBold;
+  section {
+    padding: 0.5rem;
+    &:nth-child(even) {
+      background: #6615DE;
+    }
+    &:last-child {
+      padding: 2rem;
+    }
+    .title {
+      color: #C7A3FA;
+      font-size: 0.75rem;
+    }
+    .players-list {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      .player {
+        margin: 10px 5px 0;
+        max-width: 25%;
+        .icon-wrap {
+          position: relative;
+          .img-wrap {
+            height: 4.5rem;
+            width: 4.5rem;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            overflow: hidden;
+            background: #dddddd;
+            margin: 0 0.75rem;
+          }
+          .c-icn {
+            position: absolute;
+            right: 1rem;
+            top: 0px;
+            background: #478e15;
+            color: #fff;
+            font-family: MontserratBold;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.65rem;
+            line-height: 18px;
+            text-align: center;
+          }
+        }
+        .player-name {
+          color: #fdfffe;
+          font-size: 0.65rem;
+          padding-top: 4px;
+        }
+        .player-points {
+          color: #F9B719;
+          margin-top: -3px;
+        }
+      }
+    }
+    .tp-text {
+      color: #F4F4F4;
+      font-size: 0.7rem;
+    }
+    .tp-val {
+      color: #F9B719;
+      font-family: MontserratBold;
+      font-size: 1.25rem;
+      margin-top: -4px;
+    }
+  }
+}

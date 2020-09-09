@@ -1,0 +1,26 @@
+.my-matches-component {
+  .content {
+    padding: 1rem;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    .no-data {
+      opacity: 0.5;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .text {
+        font-family: MontserratSemiBold;
+      }
+      .img {
+        width: 10rem;
+      }
+    }
+  }
+}

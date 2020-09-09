@@ -1,0 +1,29 @@
+<div class="prizes-component full">
+  <div class="prizes-title">{{ 'MY_PRIZES' | translate }}</div>
+  <div class="disclaimer">{{ 'PRIZE_CREDIT' | translate }}</div>
+  <div class="prize-list">
+    <!-- <div class="text-center py-5">COMING SOON</div> -->
+    <div class="item" *ngFor="let prize of prizes">
+      <div class="img-wrap">
+        <img src="{{ prize.img }}" />
+      </div>
+      <div class="details">
+        <div class="title">{{ prize.name }}</div>
+        <div class="desc">{{ prize.desc }}</div>
+        <div class="code-wrap">
+          <div class="code">{{ prize.couponCode }}</div>
+          <div class="expiry">
+            <div class="text">{{ 'EXPIRY_DATE' | translate }}</div>
+            <div class="date">{{ prize.expiryDate | date: 'd MMM yyyy' }}</div>
+          </div>
+        </div>
+        <div class="btn-wrap">
+          <button (click)="copy(prize.couponCode)">{{ 'COPY' | translate }}</button>
+          <button *ngIf="prize.claimUrl" class="claim" (click)="claim(prize.claimUrl)">
+            {{ 'CLAIM' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

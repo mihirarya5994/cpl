@@ -1,0 +1,104 @@
+<div class="settings-component full" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="settings-component full" *ngIf="!loading">
+  <div *ngIf="profile">
+    <div class="profile" (click)="showProfile('Profile')">
+      <div class="left">
+        <div class="img-wrap">
+          <img src="assets/images/avatars/{{ profile.avatarImg }}" />
+        </div>
+        <div class="text">
+          <div class="username">{{ profile.nickName }}</div>
+          <div class="place">{{ profile.state }}</div>
+        </div>
+      </div>
+      <div class="right">
+        <img src="assets/images/settings_arrow.png" />
+      </div>
+    </div>
+    <div class="category">
+      <div class="title">{{ 'GEN_SETTINGS' | translate }}</div>
+      <div class="settings-block">
+        <div class="setting">
+          <div class="left">{{ 'SND' | translate }}</div>
+          <div class="right">
+            <div class="switch-wrap">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="profile.sound" (change)="toggleSound('Sound')" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="setting">
+          <div class="left">{{ 'LANG' | translate }}</div>
+          <div class="right rotated" (click)="toggleLanguageSelectionPopup()">
+            <div class="text">{{ getLanguageText() | translate }}</div>
+            <div class="img-wrap"><img src="assets/images/settings_arrow.png" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="category">
+      <div class="title">{{ 'MORE_OPTS' | translate }}</div>
+      <div class="settings-block">
+        <!-- <div class="setting" (click)="showDemo()">
+          <div class="left">{{ 'PLAY_DEMO' | translate }}</div>
+          <div class="right">
+            <div class="img-wrap"><img src="assets/images/settings_arrow.png" /></div>
+          </div>
+        </div> -->
+        <div class="setting" (click)="launchUrl('how-to-play', 'How to Play')">
+          <div class="left">{{ 'HOW_PLAY' | translate }}</div>
+          <div class="right">
+            <div class="img-wrap"><img src="assets/images/settings_arrow.png" /></div>
+          </div>
+        </div>
+        <div class="setting" (click)="launchUrl('faq', 'FAQ')">
+          <div class="left">{{ 'FAQ' | translate }}</div>
+          <div class="right">
+            <div class="img-wrap"><img src="assets/images/settings_arrow.png" /></div>
+          </div>
+        </div>
+        <div class="setting" (click)="launchUrl('tnc', 'TnC')">
+          <div class="left">{{ 'TNC' | translate }}</div>
+          <div class="right">
+            <div class="img-wrap"><img src="assets/images/settings_arrow.png" /></div>
+          </div>
+        </div>
+        <div class="setting" (click)="launchUrl('invite', 'Invite Friends')">
+          <div class="left">{{ 'INV_FRNDS' | translate }}</div>
+          <div class="right">
+            <div class="img-wrap"><img src="assets/images/settings_arrow.png" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-ads [contextName]="'USER_SETTINGS'"></app-ads>
+</div>
+
+<div
+  class="language-selection-popup full"
+  data-aos="fade-up"
+  data-aos-anchor-placement="center-bottom"
+  *ngIf="showLanguageSelection"
+>
+  <div class="popup-bg full" (click)="toggleLanguageSelectionPopup()"></div>
+  <div class="popup-content">
+    <div class="header">{{ 'SEL_LANG' | translate }}</div>
+    <div class="content">
+      <div
+        class="language"
+        [class.selected]="language.value === profile.language"
+        *ngFor="let language of languages"
+        (click)="changeLanguage(language.value, 'Language')"
+      >
+        <img src="assets/images/check_filled.png" *ngIf="language.value === profile.language" />
+        <img src="assets/images/check_empty.png" *ngIf="language.value !== profile.language" />
+        {{ language.title | translate }}
+      </div>
+    </div>
+  </div>
+</div>

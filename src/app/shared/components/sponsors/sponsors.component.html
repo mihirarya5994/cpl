@@ -1,0 +1,8 @@
+<div class="sponsors-component">
+  <div class="text">{{ 'SPONSORED_BY' | translate }}</div>
+  <div #slider class="list">
+    <div class="sponsor" *ngFor="let sponsor of sponsors">
+      <div class="img-wrap"><img src="assets/images/sponsors/{{ sponsor }}" /></div>
+    </div>
+  </div>
+</div>

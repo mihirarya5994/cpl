@@ -1,0 +1,31 @@
+<div class="full-page-ad-component" *ngIf="show">
+  <div class="bg full"></div>
+  <div class="ad-container">
+    <ng-container
+      *ngIf="
+        data?.adType !== 'instreamVideo';
+        then billboardAd;
+        else InstreamAd
+      "
+    >
+    </ng-container>
+
+    <ng-template #billboardAd>
+      <app-ads [contextName]="contextName"></app-ads>
+    </ng-template>
+
+    <ng-template #InstreamAd>
+      <app-instream-video-ad
+        [contextName]="contextName"
+        (onVideoEnd)="skip()"
+      ></app-instream-video-ad>
+    </ng-template>
+
+    <div
+      class="controls d-flex justify-content-between px-5 text-uppercase w-100"
+    >
+      <div class="toggle"></div>
+      <div class="skip" (click)="skip()">{{ "SKIP_AD" | translate }}</div>
+    </div>
+  </div>
+</div>

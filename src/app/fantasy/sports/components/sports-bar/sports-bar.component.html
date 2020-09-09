@@ -1,0 +1,14 @@
+<div class="sports-bar-component d-flex align-items-center justify-content-between">
+  <div
+    class="sport"
+    *ngFor="let sport of sports"
+    [class.active]="sport.active"
+    (click)="selectSport(sport)"
+  >
+    <div class="img-wrap">
+      <img src="assets/images/sports/{{ sport.icon }}" alt="" *ngIf="!sport.active" />
+      <img src="assets/images/sports/{{ sport.activeIcon }}" alt="" *ngIf="sport.active" />
+    </div>
+    <div class="title">{{ sport.title }}</div>
+  </div>
+</div>

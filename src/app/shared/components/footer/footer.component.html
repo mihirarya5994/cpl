@@ -1,0 +1,14 @@
+<div class="footer-component row">
+  <div
+    class="col link d-flex justify-content-center align-items-center flex-column"
+    [class.active]="link.id === activeLink.id"
+    *ngFor="let link of links"
+    (click)="navigate(link)"
+  >
+    <div class="img-wrap">
+      <img src="assets/images/footer/{{ link.icon }}" *ngIf="link.id !== activeLink.id" />
+      <img src="assets/images/footer/{{ link.activeIcon }}" *ngIf="link.id === activeLink.id" />
+    </div>
+    <div class="title">{{ link.translationKey | translate }}</div>
+  </div>
+</div>

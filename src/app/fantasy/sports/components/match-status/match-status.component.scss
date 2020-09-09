@@ -1,0 +1,48 @@
+@import "mixins";
+
+.players {
+  @include flex-container(center);
+  align-items: flex-start;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-align: center;
+  height: 7.2rem;
+  position: relative;
+  .player {
+    @include flex-container(center);
+    flex-direction: column;
+    flex: 1;
+    .img-wrap {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      background: #a7a8a9;
+      margin-bottom: 5px;
+      overflow: hidden;
+    }
+    .name {
+      white-space: nowrap;
+      font-size: 0.75rem;
+      color: #1a191c;
+    }
+    .score {
+      @include flex-container(center);
+      height: 1.5rem;
+      color: #0615b8;
+      img {
+        width: 1.25rem;
+      }
+    }
+  }
+  .result {
+    height: 100%;
+    @include flex-container(center);
+    color: #3e3e3e;
+    font-size: 1rem;
+    font-family: PoppinsSemiBold;
+  }
+}

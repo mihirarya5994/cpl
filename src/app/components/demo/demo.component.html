@@ -1,0 +1,36 @@
+<div class="demo-component full" *ngIf="showDemo">
+  <div class="bg full"></div>
+  <div class="launcher p-4" *ngIf="!demoStarted">
+    <div class="img-wrap">
+      <img src="assets/images/demo_bg.png" />
+    </div>
+    <div class="content">
+      <div class="message">{{ "DEMO_MESSAGE" | translate }}</div>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" (click)="skip()">
+          {{ "SKIP" | translate }}
+        </button>
+        <button type="button" class="btn btn-primary start" (click)="start()">
+          {{ "START_DEMO" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="video-wrap full p-3" [class.show]="demoStarted">
+    <video
+      #video
+      src="assets/videos/jio_fantasy_demo.mp4"
+      playsinline
+      (ended)="markDemoComplete()"
+    ></video>
+    <div class="skip-demo">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="markDemoComplete()"
+      >
+        {{ "SKIP_DEMO" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

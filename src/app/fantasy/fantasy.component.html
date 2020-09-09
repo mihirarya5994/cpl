@@ -1,0 +1,16 @@
+<div class="fantasy-component full">
+  <div class="header-wrap">
+    <app-header></app-header>
+  </div>
+  <div class="route-content full" [class.with-footer]="showFooter">
+    <router-outlet></router-outlet>
+  </div>
+  <div
+    class="footer-wrap show"
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom"
+    *ngIf="showFooter"
+  >
+    <app-footer></app-footer>
+  </div>
+</div>

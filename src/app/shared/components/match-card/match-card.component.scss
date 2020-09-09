@@ -1,0 +1,156 @@
+@import "mixins";
+
+.match-card {
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+  @include box-shadow;
+  overflow: auto;
+  &:first-child {
+    margin-top: 0.4rem;
+  }
+  .header {
+    border-bottom: 1px solid #ededed;
+    padding: 0.6rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    font-family: MontserratBold;
+    margin: 0 0.5rem;
+  }
+  .toss-info {
+    background: #dcedcc;
+    color: #5e7746;
+    font-size: 0.75rem;
+    border: 1px solid #c3dbad;
+    margin: 1px;
+    img {
+      width: 1rem;
+    }
+  }
+  .content {
+    padding: 0.7rem 0.7rem 1.4rem;
+    text-align: center;
+    justify-content: space-around;
+    .participant {
+      width: 25%;
+      .logo {
+        width: 4.5rem;
+        height: 4.5rem;
+        border: 2px solid #e7e7e7;
+        border-radius: 6px;
+        padding: 0.5rem;
+        margin: 0 auto;
+        margin-bottom: 4px;
+      }
+      .team-name {
+        font-family: MontserratSemiBold;
+        font-size: 1rem;
+        color: #3c3c3c;
+      }
+    }
+    .details {
+      .text {
+        color: #aaaaaa;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        font-family: MontserratSemiBold;
+      }
+      .live {
+        background: #c1000f;
+        color: #fff;
+        text-transform: uppercase;
+        font-family: MontserratSemiBold;
+        border-radius: 4px;
+        display: inline-block;
+        padding: 0 1.25rem;
+      }
+      .timer {
+        color: #701aff;
+        font-family: MontserratBold;
+      }
+      .vs {
+        height: 2rem;
+        background: url(~src/assets/images/vs.png) no-repeat center center;
+        background-size: contain;
+        margin: 0.6rem 0;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        font-family: MontserratBold;
+        color: #777777;
+      }
+      .create-btn {
+        button {
+          background: #3e9100;
+          color: #fff;
+          font-size: 1.02rem;
+          letter-spacing: initial;
+          padding: 0.35rem 2rem;
+          height: auto;
+          width: auto;
+          font-family: MontserratBold;
+          &.view {
+            background: #fed02d;
+            color: #755615;
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          &.disabled {
+            background: #e6e6e6;
+            color: #757575;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+  .rooms {
+    .room {
+      margin: 1px;
+      background: #f0f0f0;
+      font-family: MontserratSemiBold;
+      @include flex-container(space-between);
+      padding: 0.25rem 1rem;
+      .details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .img-wrap {
+          height: 26px;
+          width: 26px;
+          margin-right: 5px;
+        }
+        .title {
+          color: #8e8e8e;
+          text-transform: capitalize;
+          font-size: 0.9rem;
+        }
+      }
+      .right {
+        .rank {
+          margin-right: 10px;
+        }
+      }
+      &.join {
+        font-family: MontserratBold;
+        background: #3e9100;
+        color: #fff;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        &.disabled {
+          background: #d4d4d4;
+          color: black;
+          pointer-events: none;
+        }
+        &.hide {
+          display: none;
+        }
+      }
+    }
+  }
+}

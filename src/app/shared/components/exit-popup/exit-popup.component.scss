@@ -1,0 +1,97 @@
+.popup-component {
+  .confirmation-dialog {
+    position: fixed;
+    z-index: 99;
+    .bg {
+      background: rgba(0, 0, 0, 0.75);
+    }
+    .dialog {
+      background: #fff;
+      width: 85%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 6px;
+      .header {
+        margin-top: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: MontserratBold;
+        font-size: 1.07rem;
+      }
+      .body {
+        padding: 2rem;
+        display: flex;
+        font-family: MontserratMedium;
+        font-size: 0.9rem;
+        text-align: center;
+        .sponsor {
+          margin-right: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          .img-wrap {
+            width: 4rem;
+            height: 4rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            z-index: -1;
+            position: relative;
+            padding-bottom: 5px;
+            text-align: center;
+            overflow: hidden;
+          }
+          .points {
+            background: #ededed;
+            border-radius: 50px;
+            border: 1px solid #e2e2e2;
+            display: flex;
+            padding: 2px 8px;
+            margin-top: -0.5rem;
+            .p-img-wrap {
+              width: 20px;
+              margin-right: 3px;
+            }
+            .value {
+              font-family: MontserratBold;
+              color: #6b5515;
+            }
+          }
+        }
+        .message {
+          font-family: MontserratMedium;
+          font-size: 1.1rem;
+          line-height: 1.3;
+          span {
+            color: #6100f6;
+            font-family: MontserratBold;
+          }
+        }
+      }
+      .footer {
+        display: flex;
+        .action-btn {
+          background: #fed02d;
+          flex: 1;
+          margin: 5px;
+          text-align: center;
+          text-transform: uppercase;
+          padding: 0.7rem;
+          border-radius: 4px;
+          font-family: MontserratBold;
+          outline: none;
+          border: 1px solid #e2cd83;
+          color: #3c3c3c;
+          font-size: 1.1rem;
+          &.cancel {
+            background: #3e3e3e;
+            color: #fff;
+            border-color: #3e3e3e;
+          }
+        }
+      }
+    }
+  }
+}

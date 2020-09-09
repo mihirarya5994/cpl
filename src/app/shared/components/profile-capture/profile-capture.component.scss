@@ -1,0 +1,161 @@
+@import '~src/assets/styles/helpers/mixins';
+
+.profile-capture-component {
+  @include flex-container(center);
+  .profile-capture-bg {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .profile-capture-content {
+    width: 97%;
+    overflow-y: auto;
+    position: absolute;
+
+    .header {
+      background: #082954;
+      color: #fff;
+      font-weight: 600;
+      font-family: PoppinsBold;
+      padding: 0.8rem 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 0 0.5rem;
+      border-radius: 6px;
+    }
+    .content {
+      background: #fff;
+      border-radius: 6px;
+      color: #444444;
+      padding: 1rem;
+      overflow: hidden;
+      margin-top: -4px;
+      &.no-padding {
+        padding: 0;
+      }
+      .section {
+        padding: 1rem 0 0;
+        &:first-child {
+          border-bottom: 5px solid #e4e3e4;
+        }
+        .title {
+          font-size: 1.4rem;
+          font-family: PoppinsBold;
+          text-align: center;
+        }
+        .desc {
+          padding: 0.5rem 0;
+          font-size: 1.1rem;
+          text-align: center;
+        }
+        .control {
+          position: relative;
+          input[type='text'] {
+            border-radius: 6px;
+            padding: 6px 12px;
+            border: 1px solid #c1c1c1;
+            width: 100%;
+            height: 4rem;
+            outline: none;
+            font-size: 1.1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
+            text-align: center;
+            user-select: initial !important;
+            &.with-pad {
+              padding: 6px 40px;
+            }
+          }
+          .validation-error {
+            color: red;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+          }
+          .check {
+            display: inline-block;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            .img-wrap {
+              width: 1.5rem;
+              height: 1.5rem;
+            }
+          }
+          .langauge-wrp {
+            display: flex;
+            flex-wrap: wrap;
+            .language {
+              margin: 5px;
+              height: 3.3rem;
+              text-align: center;
+              border: 1px solid #d7d7d7;
+              padding: 3%;
+              border-radius: 7px;
+              display: inline-block;
+              width: 29%;
+
+              &.selected {
+                background: #082954;
+                color: #fff;
+              }
+            }
+          }
+          .edit {
+            @include flex-container(center);
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #dddddd;
+            height: 100%;
+            width: 3rem;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            border: 1px solid #c1c1c1;
+            border-left: 0;
+            .img-wrap {
+              width: 1rem;
+              height: 1rem;
+            }
+          }
+        }
+        .info {
+          padding: 0.7rem 0;
+          font-size: 0.85rem;
+        }
+      }
+      .disclaimer {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+      .action {
+        padding-top: 1rem;
+        button {
+          color: #3e2f05;
+          background: #fdad0a;
+          width: 100%;
+          height: 50px;
+          text-transform: uppercase;
+          font-size: 1.3rem;
+          font-family: PoppinsBold;
+          outline: none;
+          border: none;
+          border-radius: 6px;
+          &.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+          }
+        }
+      }
+      .language {
+        // @include flex-container(flex-start);
+        // padding: 0.8rem 3rem;
+        // font-size: 1.1rem;
+        // border-bottom: 1px solid #dddddd;
+        img {
+          height: 1.4rem;
+          margin-right: 0.8rem;
+        }
+      }
+    }
+  }
+}

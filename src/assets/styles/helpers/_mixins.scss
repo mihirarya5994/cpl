@@ -1,0 +1,35 @@
+@import 'variables';
+
+@mixin flex-container($justify) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin box-shadow($color: #bbbbbb) {
+  box-shadow: 0px 3px 5px $color;
+}
+
+@mixin top-box-shadow($color: #bbbbbb) {
+  box-shadow: -10px 0px 5px $color;
+}
+@mixin font($size, $family: regular) {
+  font-size: $size/$primary-font-size-value + rem;
+  @if $family == thin {
+    font-family: MontserratThin;
+  } @else if ($family == light) {
+    font-family: MontserratLight;
+  } @else if ($family == regular) {
+    font-family: MontserratRegular;
+  } @else if ($family == medium) {
+    font-family: MontserratMedium;
+  } @else if ($family == semi) {
+    font-family: MontserratSemiBold;
+  } @else if ($family == bold) {
+    font-family: MontserratBold;
+  } @else if ($family == extra) {
+    font-family: MontserratExtraBold;
+  } @else if ($family == black) {
+    font-family: MontserratBlack;
+  }
+}

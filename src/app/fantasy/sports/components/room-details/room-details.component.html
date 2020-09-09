@@ -1,0 +1,56 @@
+<div class="room-details full">
+  <app-score-card [gameState]="gameState" [roomID]="roomID"></app-score-card>
+  <div class="room-details-wrap">
+    <div class="sub-header">
+      <!-- <button type="button" (click)="showPlayerStats()">Player Stats</button> -->
+      <button type="button" (click)="showMyTeam('My Team')">
+        {{ "MY_TEAM" | translate }}
+      </button>
+    </div>
+
+    <div class="playalong-wrap my-3" (click)="playIpl('JCPA Play Now')">
+      <div class="left">
+        <div class="img-wrap">
+          <img src="assets/images/jio_cricket_logo.png" alt="" />
+        </div>
+        <div class="text">{{ "PLAY_PAG" | translate }}</div>
+      </div>
+      <div class="right">
+        <button type="button">{{ "PLAY_NOW" | translate }}</button>
+      </div>
+    </div>
+    <app-ads [contextName]="'ROOM_DETAILS'"></app-ads>
+    <div class="header">
+      <div class="text-1">{{ "GUARANTEED_PRIZES" | translate }}</div>
+      <div class="text-2">
+        {{ "RANKS_COUNT" | translate: "{ from: 1, to: 50 }" }}
+        <!-- {{ 'RANKS_COUNT' | translate: '{ from: 1, to: (leaderboard?.length || 50) }' }} -->
+      </div>
+    </div>
+
+    <div class="tabs" *ngIf="match.status === 'started'">
+      <div class="tabs-container">
+        <div
+          class="tab"
+          *ngFor="let tab of tabs"
+          (click)="setTab(tab.id, 'Room Details')"
+          [class.active]="tab.id === selectedType"
+        >
+          {{ tab.name }}
+        </div>
+      </div>
+      <div class="content">
+        <ng-container *ngIf="selectedType === 'ROOMDETAILS'; else LEADERBOARD">
+          <app-room-details-tab></app-room-details-tab>
+        </ng-container>
+        <ng-template #LEADERBOARD>
+          <app-leaderboard></app-leaderboard>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="loeader-board" *ngIf="match.status !== 'started'">
+      <app-leaderboard></app-leaderboard>
+    </div>
+  </div>
+</div>

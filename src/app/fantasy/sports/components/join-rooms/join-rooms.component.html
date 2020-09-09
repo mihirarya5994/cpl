@@ -1,0 +1,210 @@
+<div class="join-rooms-component" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="join-rooms-component" *ngIf="!loading">
+  <app-toss
+    #toss
+    [match]="match"
+    [team]="team"
+    (selection)="predictToss($event)"
+  ></app-toss>
+  <div class="header">
+    <div class="title">{{ "JOIN_ROOM" | translate }}</div>
+    <div class="desc">{{ "JOIN_ROOM_DESC" | translate }}</div>
+  </div>
+  <app-ads [contextName]="'JOIN_ROOM_LISTING_BANNER'"></app-ads>
+  <div class="list pt-3" *ngIf="rooms; else loadingEl">
+    <ng-container *ngIf="rooms.length; else noDataEl">
+      <div class="room" *ngFor="let room of rooms">
+        <div class="top">
+          <div class="left">
+            <div class="img-wrap">
+              <img src="assets/images/room-sponsors/{{ room.icon }}" />
+            </div>
+            <div class="text">
+              <div class="title">
+                {{ room.name }}
+              </div>
+              <div class="desc">
+                {{ room.desc }}
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="points" [class.disabled]="room.closed">
+              <div class="number">{{ room.points }}</div>
+              <div class="img-wrap">
+                <img src="assets/images/points_icn.png" />
+              </div>
+            </div>
+            <button
+              class="join"
+              *ngIf="!room.joined && !room.lock"
+              [class.disabled]="room.closed"
+              (click)="joinRoom(room)"
+            >
+              {{ "JOIN_ROOM" | translate }}
+            </button>
+            <button
+              class="join"
+              *ngIf="room.joined && !room.lock"
+              [class.disabled]="true"
+            >
+              {{ "JOINED" | translate }}
+            </button>
+            <button class="join" *ngIf="room.lock" [class.disabled]="true">
+              {{ "LOCKED" | translate }}
+            </button>
+          </div>
+        </div>
+        <div class="middle">
+          <div class="progress">
+            <div
+              class="inner"
+              [style.width.%]="
+                (room.currentParticipants / room.maxParticipants) * 100
+              "
+            ></div>
+          </div>
+          <div class="stats">
+            <div class="left-participants" *ngIf="!room.closed">
+              {{ room.maxParticipants - room.currentParticipants | number }}
+              {{ "LEFT" | translate }}
+            </div>
+            <div class="left-participants closed" *ngIf="room.closed">
+              {{ "CLOSED" | translate }}
+            </div>
+            <div class="max-participants">
+              {{ room.maxParticipants | number }}
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="img-wrap">
+            <img src="assets/images/footer/leader.png" />
+          </div>
+          <div class="winners">
+            {{ room.guaranteedWinners }} {{ "GUARANTEED_WINNERS" | translate }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #noDataEl>
+    <div class="no-data pb-3 text-center">{{ "NO_ROOMS" | translate }}</div>
+  </ng-template>
+  <ng-template #loadingEl>
+    <app-loader></app-loader>
+  </ng-template>
+  <app-ads [contextName]="'JOIN_ROOM_LISTING_BILLBOARD'"></app-ads>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showRoomsLimitReachedPopup">
+  <div class="bg full" (click)="toggleNotificationDialog()"></div>
+  <div class="dialog">
+    <div class="header">{{ "OOPS" | translate }}!</div>
+    <div class="body">
+      <div class="message">
+        {{ "MAX_ROOMS_VALIDATION" | translate }}
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn no-shadow" (click)="toggleNotificationDialog()">
+        {{ "CLOSE" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showNoMorePointsPopup">
+  <div class="bg full" (click)="toggleShowNoMorePointsPopup()"></div>
+  <div class="dialog">
+    <div class="header">{{ "OOPS" | translate }}!</div>
+    <div class="body">
+      <div class="message">
+        {{ "NOT_ENOUGH_POINTS_VALIDATION" | translate }}
+      </div>
+    </div>
+    <div class="footer">
+      <button
+        class="action-btn no-shadow"
+        (click)="toggleShowNoMorePointsPopup(true)"
+      >
+        {{ "CLOSE" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showNoTossSelectionPopup">
+  <div class="bg full" (click)="toggleShowNoTossSelectionPopup()"></div>
+  <div class="dialog">
+    <div class="header">{{ "OOPS" | translate }}!</div>
+    <div class="body">
+      <div class="message">
+        Please predict toss before creating a team.
+      </div>
+    </div>
+    <div class="footer">
+      <button
+        class="action-btn no-shadow"
+        (click)="toggleShowNoTossSelectionPopup()"
+      >
+        {{ "CLOSE" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-dialog full" *ngIf="showRoomJoinConfirmationDialog">
+  <div class="bg full" (click)="toggleConfirmationDialog()"></div>
+  <div class="dialog">
+    <div class="header">{{ "CONFIRMATION" | translate }}</div>
+    <div class="body">
+      <div class="sponsor">
+        <div class="img-wrap">
+          <img
+            src="assets/images/room-sponsors/{{ selctedRoom.icon }}"
+            alt=""
+          />
+        </div>
+        <div class="points">
+          <div class="p-img-wrap">
+            <img src="assets/images/points_icn.png" alt="" />
+          </div>
+          <div class="value">{{ selctedRoom.points }}</div>
+        </div>
+      </div>
+      <div class="message">
+        Do you really want to join <span>{{ selctedRoom.name }}</span> room for
+        your fantasy match?
+      </div>
+    </div>
+    <div class="footer">
+      <button class="action-btn cancel no-shadow" (click)="cancelJoining()">
+        {{ "CANCEL" | translate }}
+      </button>
+      <button class="action-btn no-shadow" (click)="createTeamAndJoinRoom()">
+        <span *ngIf="!confirming">{{ "CONFIRM" | translate }}</span>
+        <span *ngIf="confirming">{{ "PLEASE_WAIT" | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="join-options full" *ngIf="showJoinRoomptionspopup">
+  <div class="bg full" (click)="toggleOpenRoomOptionPopup()"></div>
+  <div class="dialog">
+    <div class="header">{{ "JOIN_ROOM_OPTIONS_TEXT" | translate }}</div>
+    <div class="body">
+      <div class="options">
+        <button class="cta create" (click)="createTeamManually( true )">
+          {{ "CREATE_TEAM_FLOW" | translate }}
+        </button>
+        <button class="cta join" (click)="joinWithExistingTeam()">
+          {{ "JOIN_WITH_EXISTING" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

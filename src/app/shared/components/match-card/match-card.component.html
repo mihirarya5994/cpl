@@ -1,0 +1,93 @@
+<div class="match-card w-100">
+  <div class="header d-flex align-items-center justify-content-between">
+    <div class="day">{{ match.startTime | date: "EEEE | d MMM y" }}</div>
+    <div class="time">{{ match.startTime | date: "h:mm a" }}</div>
+  </div>
+  <div
+    class="toss-info d-flex align-items-center justify-content-center p-1"
+    *ngIf="type === 'live'"
+  >
+    <span>{{ toss.winningTeam }} has won the toss</span>&nbsp;
+    <span *ngIf="toss.userWon"
+      >and you have earned <img src="assets/images/points_icn.png" />
+      <strong>&nbsp;{{ toss.points }}</strong></span
+    >
+  </div>
+  <div class="content d-flex align-items-center">
+    <div class="participant scale-up-center">
+      <div class="logo">
+        <img src="assets/images/teams/{{ match.teams[0].icon }}" alt="" />
+      </div>
+      <div class="team-name">{{ match.teams[0].alias | translate }}</div>
+    </div>
+    <div class="details">
+      <div class="text" *ngIf="!type || type === 'upcoming' || type === 'new'">
+        {{ "MATCH_STARTS_IN" | translate }}
+      </div>
+      <div class="text" *ngIf="type === 'past'">
+        {{ "MATCH_ENDED" | translate }}
+      </div>
+      <div class="live" *ngIf="type === 'live'">{{ "LIVE" | translate }}</div>
+      <div class="timer" *ngIf="!type || type === 'upcoming' || type === 'new'">
+        <app-countdown
+          (finish)="coutdownfinished()"
+          [date]="match.startTime"
+        ></app-countdown>
+      </div>
+      <div class="vs d-flex align-items-center justify-content-center">
+        vs
+      </div>
+      <div class="create-btn" *ngIf="type === 'new'">
+        <button
+          *ngIf="!isMatchStarted"
+          type="button"
+          [class.disabled]="match.active === false"
+          (click)="select()"
+        >
+          {{ "JOIN_ROOM" | translate }}
+        </button>
+      </div>
+    </div>
+    <div class="participant scale-up-center">
+      <div class="logo">
+        <img src="assets/images/teams/{{ match.teams[1].icon }}" alt="" />
+      </div>
+      <div class="team-name">{{ match.teams[1].alias | translate }}</div>
+    </div>
+  </div>
+  <div class="rooms">
+    <div *ngFor="let room of match.rooms" (click)="showRoomDetails(room)">
+      <div class="room" *ngIf="room">
+        <div class="details">
+          <div class="img-wrap">
+            <img src="assets/images/footer/leader.png" />
+          </div>
+          <div class="title">{{ room.name }}</div>
+        </div>
+        <div class="right">
+          <span
+            *ngIf="type === 'live'"
+            class="rank"
+            [class.higher]="room.currentRank - room.previousRank >= 0"
+            [class.lower]="room.previousRank - room.currentRank > 0"
+          >
+            #{{ room.currentRank }}
+          </span>
+          <span *ngIf="type === 'past'" class="rank"
+            >#{{ room.currentRank }}</span
+          >
+          <img src="assets/images/score_arrow.png" />
+        </div>
+      </div>
+    </div>
+    <div
+      class="room join"
+      [class.disabled]="rooms?.length === joinedRooms?.length"
+      [class.hide]="!rooms?.length || !joinedRooms?.length"
+      *ngIf="type === 'upcoming'"
+      (click)="joinAnotherRoom()"
+    >
+      {{ "JOIN_ANOTHER" | translate }}
+    </div>
+  </div>
+</div>

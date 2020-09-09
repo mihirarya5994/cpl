@@ -1,0 +1,39 @@
+@import "mixins";
+
+.room-details-tab {
+    padding-bottom: 1rem;
+    position: relative;
+    min-height: 150px;
+    background-color: #fff;
+    padding-top: 3px;
+    border-radius: 0 0 11px 11px;
+    .header-message{
+        color: #1B4623;
+        background-color: #DCF4D3;
+        border: 1px solid #4E905B;
+        padding: 0.5rem;
+        border-radius: 5px;
+        @include font (18,bold);
+        text-align: center;
+        margin: 6px;
+    }
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #3C3C3C;
+        padding: 2rem 0;
+        .text1{
+            padding: 0.5rem;
+            @include font(21, medium);
+        }
+        .text2{
+            @include font(34, bold);
+            padding-bottom: 2rem;
+        }
+        .image{
+            height: 10rem;
+        }
+    }
+}

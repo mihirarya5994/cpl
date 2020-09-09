@@ -1,0 +1,26 @@
+@import "mixins";
+
+.match-filter {
+  .tabs {
+    // @include box-shadow;
+    box-shadow: 0px 0px 5px #5400a7;
+    @include flex-container(space-between);
+    text-transform: uppercase;
+    height: 40px;
+    background-color: #5400a7;
+    color: #d8b8fb;
+    .tab {
+      @include flex-container(center);
+      flex: 1;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+      height: 100%;
+      font-family: MontserratSemiBold;
+      &.active {
+        color: #ffdc43;
+        border-bottom: 3px solid #ffdc43;
+      }
+    }
+  }
+}

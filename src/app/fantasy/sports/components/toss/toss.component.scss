@@ -1,0 +1,92 @@
+@import "mixins";
+
+.toss-component {
+  @include box-shadow;
+  background: #fff;
+  padding: 1px;
+  border-radius: 6px;
+  text-align: center;
+  border-radius: 11px;
+  .title {
+    background: #edeaf1;
+    color: #3c3c3c;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-family: MontserratSemiBold;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin-bottom: 1px;
+  }
+  .sub-title {
+    height: 1.75rem;
+    background: #e2f0d5;
+    border: 2px solid #bdcfa7;
+    color: #39561e;
+    font-size: 0.7rem;
+    @include flex-container(center);
+    font-family: MontserratMedium;
+    .points {
+      font-family: MontserratBold;
+      color: #474734;
+      .img-wrap {
+        height: 1rem;
+      }
+    }
+  }
+  .participants {
+    @include flex-container(space-around);
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    .participant {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .img-wrap {
+        height: 4.5rem;
+        width: 4.5rem;
+        border: 2px solid #e8e9e8;
+        border-radius: 6px;
+        padding: 8px;
+        &.selected {
+          border: 3px solid #49950c;
+        }
+        &.locked {
+          border: 3px solid gray;
+        }
+        &.correct {
+          border: 3px solid #478d16;
+        }
+        &.wrong {
+          border: 3px solid red;
+        }
+        .selected-tick {
+          position: absolute;
+          left: -5px;
+          top: -4px;
+          width: 22px;
+          height: 22px;
+        }
+      }
+      .team-title {
+        font-size: 0.9rem;
+      }
+      .win-icon {
+        position: absolute;
+        top: -0.55rem;
+        left: -0.55rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        &.first {
+          left: 2rem;
+        }
+        &.second {
+          left: 1rem;
+        }
+      }
+    }
+  }
+}

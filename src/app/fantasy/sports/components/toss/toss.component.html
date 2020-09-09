@@ -1,0 +1,52 @@
+<div class="toss-component" *ngIf="!toss.result">
+  <div class="title">{{ "WHO_WINS_TOSS" | translate }}</div>
+  <div class="sub-title" *ngIf="!toss.result || !toss.userSelection">
+    <div class="text">{{ "CORRECT_PREDICTION" | translate }} = &nbsp;</div>
+    <div class="points">
+      <div class="img-wrap">
+        <img src="assets/images/points_icn.png" />
+        {{ match.validations?.correctPredictionPoints }}
+      </div>
+    </div>
+  </div>
+  <div class="sub-title" *ngIf="toss.result && toss.userSelection">
+    <div class="text" *ngIf="toss.correctAnswer">
+      Correct Prediction! You have won &nbsp;
+    </div>
+    <div class="text" *ngIf="toss.wrongAnswer">Wrong Prediction!</div>
+    <div class="points" *ngIf="toss.correctAnswer">
+      <div class="img-wrap">
+        <img src="assets/images/points_icn.png" />
+        {{ match.validations.correctPredictionPoints }}
+      </div>
+    </div>
+  </div>
+  <div class="participants">
+    <div
+      class="participant"
+      *ngFor="let team of match?.teams; let i = index"
+      (click)="select(team)"
+    >
+      <div
+        class="img-wrap"
+        [class.selected]="toss.userSelection?.teamId === team.teamId"
+        [class.locked]="(match?.questions)[0].lock"
+        [class.correct]="toss.result?.teamId === team.teamId"
+        [class.wrong]="
+          toss.userSelection?.teamId === team.teamId &&
+          toss.result &&
+          toss.result?.teamId !== team.teamId
+        "
+      >
+        <div
+          class="selected-tick"
+          *ngIf="toss.userSelection?.teamId === team.teamId"
+        >
+          <img src="assets/images/toss-tick.svg" alt="" />
+        </div>
+        <img src="assets/images/teams/{{ team.icon }}" alt="" />
+      </div>
+      <div class="team-title">{{ team.alias | translate }}</div>
+    </div>
+  </div>
+</div>

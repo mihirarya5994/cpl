@@ -1,0 +1,81 @@
+<div class="profile-capture-component full">
+  <div class="profile-capture-bg full"></div>
+  <div
+    class="profile-capture-content"
+    *ngIf="!showLanguageSelection"
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom"
+  >
+    <div class="header">{{ "ENTER_DETAILS" | translate }}</div>
+    <div class="content">
+      <div class="section">
+        <div class="input-wrp">
+          <div class="title">
+            {{ "NICK" | translate }}
+          </div>
+          <div class="desc">
+            {{ "CHOOSE_NICK" | translate }}
+          </div>
+          <div class="control">
+            <input
+              type="text"
+              placeholder="Type your Nickname"
+              [(ngModel)]="profile.nickName"
+              required
+              pattern="^(?=.*[a-zA-Z_])([a-zA-Z0-9_]+)$"
+              minlength="2"
+              maxlength="14"
+              #nameField="ngModel"
+            />
+            <div class="validation-error" *ngIf="nameField.errors?.pattern">
+              {{ "ALPHANUMERIC_VALIDATION" | translate }}
+            </div>
+            <div class="validation-error" *ngIf="nameField.errors?.minlength">
+              {{ "MIN_CHAR_VALIDATION" | translate }}
+            </div>
+            <div class="validation-error" *ngIf="nameField.errors?.maxlength">
+              {{ "MAX_CHAR_VALIDATION" | translate }}
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <!-- <div class="title">
+            {{ 'LANG' | translate }}
+          </div>
+          <div class="desc">{{ 'PREF_LANG' | translate }}</div>
+          <div class="control">
+            <div class="content no-padding">
+              <div class="langauge-wrp">
+                <div
+                  class="language"
+                  [class.selected]="language === selectedLanguage"
+                  *ngFor="let language of languages"
+                  (click)="selectLanguage(language)"
+                >
+                  {{ language.title }}
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="disclaimer">
+            {{ "CLICK_PLAY_NOW" | translate }}
+
+            <span (click)="showTnC()"
+              ><strong>{{ "TNC" | translate }}</strong></span
+            >
+          </div>
+
+          <div class="action">
+            <button
+              type="button"
+              [class.disabled]="!profile.nickName || nameField.errors"
+              (click)="updateProfile()"
+            >
+              {{ "CONTINUE" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

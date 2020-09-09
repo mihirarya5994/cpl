@@ -1,0 +1,50 @@
+<div class="game-tile-component" [class.hidden]="loading" #jcpaLauncher>
+  <div class="slide" *ngFor="let game of games">
+    <div class="game-info p-1">
+      <div class="when">
+        {{ game.startTime | date: "EEEE, d MMMM y | h:mm a" }}
+      </div>
+      <div class="where">{{ game.venue.stadium }}, {{ game.venue.city }}</div>
+    </div>
+    <div class="content w-100 text-center">
+      <div class="teams">
+        <div class="team">
+          <div class="img-wrap">
+            <img src="assets/images/teams/{{ game.teams[0].icon }}" />
+          </div>
+          <div class="team-name">{{ game.teams[0].name }}</div>
+        </div>
+        <div class="vs m-3">VS</div>
+        <div class="team">
+          <div class="img-wrap">
+            <img src="assets/images/teams/{{ game.teams[1].icon }}" />
+          </div>
+          <div class="team-name">{{ game.teams[1].name }}</div>
+        </div>
+      </div>
+      <div class="countdown" *ngIf="!game.started">
+        <div class="text">{{ "GAME_STARTS_IN" | translate }}</div>
+        <div class="timer">
+          <span class="time" *ngIf="nextGameStartTime?.days > 0"
+            >{{ nextGameStartTime?.days | pad }}d</span
+          >
+          <span class="separator" *ngIf="nextGameStartTime?.days > 0">:</span>
+          <span class="time" *ngIf="nextGameStartTime?.hours > 0"
+            >{{ nextGameStartTime?.hours | pad }}h</span
+          >
+          <span class="separator" *ngIf="nextGameStartTime?.hours > 0">:</span>
+          <span class="time">{{ nextGameStartTime?.minutes | pad }}m</span>
+          <span class="separator">:</span>
+          <span class="time">{{ nextGameStartTime?.seconds | pad }}s</span>
+        </div>
+      </div>
+      <div class="play-now" *ngIf="game.started" (click)="play(game)">
+        <button type="button">PLAY NOW</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="game-tile-component" *ngIf="loading">
+  <app-loader></app-loader>
+</div>

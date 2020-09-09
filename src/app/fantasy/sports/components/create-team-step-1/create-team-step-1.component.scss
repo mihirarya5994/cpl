@@ -1,0 +1,407 @@
+@import "mixins";
+
+.create-team-component {
+  overflow-y: auto;
+  .scroll-content {
+    // overflow-y: auto;
+
+    .match-info {
+      background: linear-gradient(to bottom, #5400a7, #2a0054);
+
+      background-size: cover;
+      text-align: center;
+      padding: 1rem 0 0 0;
+      width: 100%;
+      z-index: 1;
+      .info {
+        background-color: #5A24A8;
+        font-size: 0.85rem;
+        display: inline-block;
+        padding: 2px 6px;
+        margin: 0 auto;
+        text-transform: uppercase;
+        color: #cac8cc;
+        font-family: MontserratSemiBold;
+        span {
+          color: #ffdc43;
+        }
+      }
+      .match-wrap {
+        @include flex-container(center);
+        margin: 1rem;
+        border-bottom: 1px solid #672bbc;
+        padding-bottom: 1rem;
+        .participant {
+          .img-wrap {
+            background: #fff;
+            border-radius: 6px;
+            padding: 8px;
+            width: 4.5rem;
+            height: 4.5rem;
+            margin-bottom: 2px;
+            position: relative;
+            overflow: hidden;
+            .player-count {
+              position: absolute;
+              bottom: 0;
+              width: 1.5rem;
+              height: 1.5rem;
+              background: #3c870c;
+              color: #fff;
+              font-family: MontserratSemiBold;
+              &.one {
+                right: 0;
+              }
+              &.two {
+                left: 0;
+              }
+            }
+          }
+          .team-name {
+            color: #fff;
+            font-size: 0.9rem;
+            font-family: MontserratSemiBold;
+          }
+        }
+        .timer-wrap {
+          .text {
+            color: #d8b8fb;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            margin: 0 1rem;
+            font-family: MontserratSemiBold;
+          }
+          .timer {
+            color: #ffdc43;
+            font-family: MontserratBold;
+            /deep/ .countdown-component {
+              color: #ffdc43;
+            }
+          }
+        }
+      }
+      .team-numbers {
+        @include flex-container(space-between);
+        padding: 0 1rem;
+        font-size: 0.9rem;
+        font-family: MontserratSemiBold;
+        color: #fff;
+        .members-wrap {
+          font-family: MontserratSemiBold;
+          font-size: 0.9rem;
+          .selected {
+          }
+          .total {
+            color: #b686f7;
+          }
+        }
+        .points-wrap {
+          .points-burned {
+          }
+          .points-avlbl {
+            color: #b686f7;
+          }
+          .img-wrap {
+            width: 1.2rem;
+            display: inline-block;
+            margin: 0 0 0 5px;
+          }
+        }
+      }
+    }
+    .players-wrap {
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+      .tab-bar {
+        @include box-shadow;
+        background: #fff;
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+        z-index: 1;
+        .tab {
+          flex: 1;
+          padding: 1rem 0 0.75rem 0;
+          @include flex-container(center);
+          flex-direction: column;
+          text-transform: uppercase;
+          .numbers {
+            font-family: PoppinsBold;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            .selected {
+              color: #347f05;
+            }
+            .total {
+              color: #000;
+            }
+          }
+          .title {
+            font-family: MontserratBold;
+            font-size: 0.65rem;
+            margin-top: -2px;
+            color: #717171;
+          }
+          &.active {
+            border-bottom: 2px solid #5600f7;
+            .title {
+              color: #701aff;
+            }
+          }
+        }
+      }
+      .players-list {
+        padding: 1rem;
+        position: relative;
+        padding-bottom: 50px;
+        .player {
+          background: #fff;
+          border-radius: 6px;
+          padding: 10px 5px;
+          text-transform: uppercase;
+          margin-bottom: 0.7rem;
+          height: 6rem;
+          @include flex-container(space-between);
+          &.selected {
+            .icon-wrap {
+              border: 2px solid #7eae5a;
+            }
+          }
+          .left {
+            @include flex-container(flex-start);
+            .icon-wrap {
+              @include flex-container(center);
+              @include box-shadow;
+              width: 5rem;
+              height: 5rem;
+              min-width: 5rem;
+              min-height: 5rem;
+              background: #dddddd;
+              border-radius: 50%;
+              position: relative;
+              margin-right: 10px;
+              display: inline-flex;
+              transition: border 0.1s linear;
+              .team-icon {
+                position: absolute;
+                width: 22px;
+                background: #fff;
+                border-radius: 50%;
+                height: 22px;
+                left: 0px;
+                top: 0;
+                border: 1px solid #e6e6e6;
+                @include flex-container(center);
+                overflow: hidden;
+              }
+              .player-img {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: 2px solid #fff;
+              }
+              .player-status {
+                background: #489118;
+                padding: 1px 5px;
+                border-radius: 10px;
+                font-size: 0.55rem;
+                color: white;
+                text-transform: uppercase;
+                text-align: center;
+                position: absolute;
+                bottom: -2px;
+                &.not-playing {
+                  background: #ea0035;
+                }
+              }
+            }
+            .details {
+              display: inline-flex;
+              flex-direction: column;
+              width: 11rem;
+              .name {
+                font-family: MontserratBold;
+                white-space: nowrap;
+                color: #3c3c3c;
+                z-index: 1;
+              }
+              .skill {
+                font-family: MontserratBold;
+                color: #947cb6;
+                font-size: 0.65rem;
+                margin-top: -2px;
+                z-index: 1;
+              }
+              .points {
+                background: #e2e2e2;
+                padding: 2px 5px;
+                margin-top: 5px;
+                font-family: MontserratBold;
+                position: relative;
+                .text {
+                  color: #717171;
+                  font-size: 0.65rem;
+                }
+                .value {
+                  color: #5b25b9;
+                  margin-top: -4px;
+                }
+                .dummy-traingle {
+                  position: absolute;
+                  top: -25px;
+                  right: -25px;
+                  width: 50px;
+                  height: 50px;
+                  transform: rotate(45deg);
+                  background: #fff;
+                }
+              }
+            }
+          }
+          .actions {
+            text-align: right;
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            flex: 1;
+            .points {
+              display: inline-flex;
+              align-items: center;
+              background: #d2ced9;
+              border: 1px solid #e8e5e7;
+              border-radius: 25px;
+              padding: 2px 2px 2px 10px;
+              font-family: MontserratBold;
+              .number {
+                margin-right: 2px;
+              }
+              .img-wrap {
+                width: 1.35rem;
+              }
+            }
+            .action {
+              display: flex;
+              justify-content: flex-end;
+              width: 100%;
+              button {
+                color: #fff;
+                outline: none;
+                background: #49950c;
+                border-radius: 27px;
+                font-size: 0.6rem;
+                font-family: MontserratBold;
+                /* padding: 0 10px; */
+                height: 1.75rem;
+                letter-spacing: initial;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                z-index: 1;
+                .add-icn {
+                  height: 100%;
+                  width: 20%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                }
+
+                .add-text {
+                  flex: 1;
+                  width: 100%;
+                }
+
+                &.remove {
+                  background: #616161;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 80%;
+                }
+              }
+            }
+          }
+        }
+      }
+      &.with-confirm-btn {
+        position: absolute;
+        bottom: 50px;
+      }
+    }
+  }
+  .confirm-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    button {
+      background: #e0a60e;
+      color: #55440e;
+      text-transform: uppercase;
+      height: 50px;
+      border-radius: 0;
+      font-size: 1rem;
+    }
+  }
+}
+
+.confirmation-dialog {
+  position: fixed;
+  z-index: 2;
+  .bg {
+    background: rgba(0, 0, 0, 0.75);
+  }
+  .dialog {
+    background: #fff;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    .header {
+      padding: 0.8rem;
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 1px solid #ebebeb;
+      font-family: MontserratBold;
+      color: #4E4E4E;
+    }
+    .body {
+      padding: 1rem;
+      display: flex;
+      .message {
+        color: #3C3C3C;
+        font-family: MontserratMedium;
+        font-size: 0.9rem;
+        text-align: center;
+        margin: auto;
+        span {
+          color: #6100f6;
+          font-family: MontserratBold;
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      .action-btn {
+        color: #3C3C3C;
+        background: #fed02d;
+        flex: 1;
+        margin: 5px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-family: MontserratBold;
+        outline: none;
+        border: 1px solid #70707081;
+      }
+    }
+  }
+}

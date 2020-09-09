@@ -1,0 +1,22 @@
+<div class="popup-component">
+  <div class="confirmation-dialog full">
+    <div class="bg full"></div>
+    <div class="dialog">
+      <div class="header">{{ "EXIT_HEADER" | translate }}</div>
+      <div class="body">
+        {{ "EXIT_MESSAGE" | translate }}
+      </div>
+      <div class="footer">
+        <button
+          class="action-btn cancel no-shadow"
+          (click)="handleCta('cancel', 'Cancel')"
+        >
+          {{ "CANCEL" | translate }}
+        </button>
+        <button class="action-btn no-shadow" (click)="handleCta('confirm', 'okay')">
+          <span>{{ "OK" | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

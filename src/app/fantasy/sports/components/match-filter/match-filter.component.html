@@ -1,0 +1,12 @@
+<div class="match-filter">
+  <div class="tabs">
+    <div
+      class="tab"
+      *ngFor="let tab of tabs"
+      (click)="setTab(tab.id,tab.trackkey)"
+      [class.active]="tab.id === selectedType"
+    >
+      {{ tab.title | translate }}
+    </div>
+  </div>
+</div>

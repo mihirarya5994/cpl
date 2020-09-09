@@ -1,0 +1,27 @@
+@import "mixins";
+
+.sports-bar-component {
+  @include box-shadow;
+  background: #5f00f8;
+  height: 100%;
+  .sport {
+    text-align: center;
+    padding: 0.25rem 5%;
+    &.active {
+      border-bottom: 2px solid #fecf2c;
+      .title {
+        color: #f7ce30;
+      }
+    }
+    .img-wrap {
+      width: 2.25rem;
+      margin: 0 auto;
+    }
+    .title {
+      text-transform: uppercase;
+      color: #c08efc;
+      font-family: PoppinsSemiBold;
+      font-size: 0.7rem;
+    }
+  }
+}
